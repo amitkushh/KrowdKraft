@@ -50,7 +50,7 @@ export default function Team() {
     {
       name: "Amrutha Druthi",
       role: "Operations Lead",
-      bio: "Ensuring seamless execution of every community initiative",
+      bio: "A detail-oriented planner who thrives on smart strategies",
       image: "/api/placeholder/300/300",
       social: {
         linkedin: "https://www.linkedin.com/in/amrutha-druthi-8421a8225/",
