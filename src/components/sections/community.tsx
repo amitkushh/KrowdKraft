@@ -78,8 +78,7 @@ export default function Community() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <motion.a
-            href="/community"
+          <motion.div
             whileHover={{ 
               scale: 1.05,
               rotateX: 3,
@@ -91,11 +90,13 @@ export default function Community() {
             style={{ transformStyle: "preserve-3d" }}
             className="inline-block"
           >
-            <Button variant="neon" size="lg" className="group transform-gpu">
-              Explore Our Community
-              <ArrowRight className="ml-2 h-4 w-4" />
+            <Button asChild variant="neon" size="lg" className="group transform-gpu">
+              <a href="/community">
+                Explore Our Community
+                <ArrowRight className="ml-2 h-4 w-4 pointer-events-none" />
+              </a>
             </Button>
-          </motion.a>
+          </motion.div>
         </motion.div>
       </div>
     </section>

@@ -330,7 +330,7 @@ export default function ServicesPage() {
                   className="group text-lg px-8 py-4 h-auto border-2"
                   onClick={() => setIsQuoteModalOpen(true)}
                 >
-                  Book a Call
+                  Get Custom Quote
                   <ArrowRight className="ml-3 h-5 w-5 pointer-events-none" />
               </Button>
               </div>

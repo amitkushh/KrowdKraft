@@ -93,11 +93,11 @@ export default function Hero() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-4xl mx-auto mt-24 sm:mt-32"
+          className="max-w-5xl mx-auto mt-24 sm:mt-32"
         >
           {/* Main Heading */}
           <motion.h1 
-            className="text-5xl sm:text-7xl lg:text-8xl font-bold mb-6 text-balance text-center"
+            className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 text-balance text-center"
             style={{ 
               background: "linear-gradient(135deg, #ffffff 0%, #f8fafc 25%, #e2e8f0 50%, #cbd5e1 75%, #94a3b8 100%)",
               WebkitBackgroundClip: "text",
@@ -115,7 +115,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl sm:text-2xl lg:text-3xl text-muted-foreground mb-8 max-w-4xl mx-auto text-balance text-center"
+            className="text-lg sm:text-xl lg:text-2xl text-muted-foreground mb-8 max-w-5xl mx-auto text-balance text-center"
           >
             We create cultural moments that connect brands with the next generation.
           </motion.p>

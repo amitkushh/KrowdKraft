@@ -62,15 +62,23 @@ export default function AnimatedButton({
   if (href) {
     return (
       <motion.div {...animationProps} className="inline-block">
-        {external ? (
-          <a href={href} target="_blank" rel="noopener noreferrer" className="inline-block">
-            {buttonElement}
-          </a>
-        ) : (
-          <Link href={href} className="inline-block">
-            {buttonElement}
-          </Link>
-        )}
+        <Button
+          asChild
+          variant={variant}
+          size={size}
+          className={`transform-gpu ${className}`}
+          disabled={disabled}
+        >
+          {external ? (
+            <a href={href} target="_blank" rel="noopener noreferrer">
+              {children}
+            </a>
+          ) : (
+            <Link href={href}>
+              {children}
+            </Link>
+          )}
+        </Button>
       </motion.div>
     )
   }

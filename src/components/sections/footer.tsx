@@ -70,19 +70,19 @@ export default function Footer() {
       </div>
 
       {/* Newsletter Section */}
-      <section id="newsletter-section" className="py-20 relative z-10">
+      <section id="newsletter-section" className="py-16 relative z-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-4xl mx-auto text-center"
+            className="max-w-3xl mx-auto text-center"
           >
-            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
               Stay in the{" "}
               <span className="neon-text bg-clip-text bg-gradient-to-r from-neon to-purple-400">Loop</span>
             </h3>
-            <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
               Join our community of innovators and get exclusive updates on events, 
               collaborations, and opportunities delivered straight to your inbox.
             </p>
@@ -110,13 +110,13 @@ export default function Footer() {
                     onChange={(e) => setEmail(e.target.value)}
                     required
                     disabled={isSubmitting}
-                    className="flex-1 px-6 py-4 bg-white/5 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-neon focus:border-transparent disabled:opacity-50 text-lg"
+                    className="flex-1 px-6 py-3 h-12 bg-white/5 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-neon focus:border-transparent disabled:opacity-50"
                   />
                   <Button 
                     type="submit" 
                     variant="neon" 
                     size="lg"
-                    className="group px-8" 
+                    className="group px-8 h-12" 
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? 'Subscribing...' : 'Subscribe'}
