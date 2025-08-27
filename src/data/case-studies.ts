@@ -75,7 +75,7 @@ export const caseStudies: CaseStudy[] = [
       "/images/case-studies/duolingo-2.jpg"
     ],
     video: "/videos/duolingo-recap.mp4",
-    category: "social-content" as ServiceCategory,
+    category: "creator-collabs" as ServiceCategory,
     tags: ["education", "character", "viral", "language", "personality"],
     metrics: [
       { label: "Follower Growth", value: "+2.3M" },
@@ -102,23 +102,6 @@ export const caseStudies: CaseStudy[] = [
     ],
     featured: false,
     createdAt: "2024-02-05T16:20:00Z"
-  },
-  {
-    id: "airbnb-gen-z-insights",
-    title: "Airbnb Gen Z Travel Insights",
-    client: "Airbnb", 
-    description: "Conducted rapid research sprints to understand Gen Z travel behavior, leading to the development of new product features and marketing strategies.",
-    image: "/images/case-studies/airbnb-research.jpg",
-    category: "research-sprints" as ServiceCategory,
-    tags: ["travel", "insights", "behavior", "features", "strategy"],
-    metrics: [
-      { label: "Research Participants", value: "2,500+" },
-      { label: "Insights Generated", value: "150+" },
-      { label: "Feature Concepts", value: "8" },
-      { label: "Implementation Rate", value: "75%" }
-    ],
-    featured: false,
-    createdAt: "2024-05-12T13:45:00Z"
   }
 ]
 

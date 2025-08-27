@@ -4,7 +4,7 @@ import About from "@/components/sections/about"
 import ServicesPreview from "@/components/sections/services-preview"
 import Community from "@/components/sections/community"
 import Team from "@/components/sections/team"
-import Contact from "@/components/sections/contact"
+
 import FAQ from "@/components/sections/faq"
 import Footer from "@/components/sections/footer"
 import ParallaxWrapper from "@/components/parallax-wrapper"
@@ -36,11 +36,7 @@ export default function HomePage() {
           <Team />
         </ParallaxWrapper>
       </section>
-      <section id="contact">
-        <ParallaxWrapper speed={0.3}>
-          <Contact />
-        </ParallaxWrapper>
-      </section>
+
       <section id="faq">
         <ParallaxWrapper speed={0.4}>
           <FAQ />

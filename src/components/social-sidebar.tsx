@@ -1,33 +1,34 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Twitter, Instagram, Linkedin, MessageCircle } from "lucide-react"
+import { Instagram, Linkedin } from "lucide-react"
+
+// Custom X Logo Component
+const XIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+  </svg>
+)
 import { usePathname } from "next/navigation"
 
 const socialLinks = [
   {
-    icon: Twitter,
-    href: "https://twitter.com/krowdkraft",
-    label: "Twitter/X",
+    icon: XIcon,
+    href: process.env.NEXT_PUBLIC_TWITTER_URL || "https://x.com/KrowdKraft_",
+    label: "X (Twitter)",
     color: "#ffffff"
   },
   {
     icon: Instagram,
-    href: "https://instagram.com/krowdkraft",
+    href: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://www.instagram.com/krowdkraft_/",
     label: "Instagram",
     color: "#E1306C"
   },
   {
     icon: Linkedin,
-    href: "https://linkedin.com/company/krowdkraft",
+    href: process.env.NEXT_PUBLIC_LINKEDIN_URL || "https://www.linkedin.com/company/krowdkraft/",
     label: "LinkedIn",
     color: "#0077B5"
-  },
-  {
-    icon: MessageCircle,
-    href: "https://discord.gg/krowdkraft",
-    label: "Discord",
-    color: "#7289DA"
   }
 ]
 
@@ -40,7 +41,7 @@ export default function SocialSidebar() {
   }
 
   return (
-    <div className="absolute right-6 top-1/2 transform -translate-y-1/2 z-30 hidden lg:block">
+    <div className="absolute right-8 top-1/2 transform -translate-y-16 z-30 hidden lg:block">
       <div className="flex flex-col space-y-4">
         {socialLinks.map((social, index) => {
           const Icon = social.icon
@@ -58,7 +59,7 @@ export default function SocialSidebar() {
               whileHover={{ 
                 scale: 1.2,
                 rotateZ: 5,
-                transition: { type: "spring", stiffness: 300, damping: 20 }
+                transition: { type: "spring", stiffness: 300, damping: 30 }
               }}
               whileTap={{ scale: 0.9 }}
               className="group relative"

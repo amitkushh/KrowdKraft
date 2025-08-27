@@ -5,9 +5,43 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Play } from "lucide-react"
 import SimpleGlobe3D from "@/components/simple-globe"
 import SocialSidebar from "@/components/social-sidebar"
-import { Suspense } from "react"
+import { Suspense, useState, useEffect, useRef } from "react"
+
+// Static Particle Component
+function StaticParticle({ 
+  index, 
+  size, 
+  color, 
+  opacity 
+}: { 
+  index: number
+  size: string
+  color: string
+  opacity: string
+}) {
+  const position = useState({
+    x: Math.random() * 100,
+    y: Math.random() * 100
+  })[0]
+
+  return (
+    <div
+      className={`absolute ${size} ${color} rounded-full ${opacity}`}
+      style={{
+        left: `${position.x}%`,
+        top: `${position.y}%`,
+        animation: `float ${3 + Math.random() * 4}s ease-in-out infinite`,
+        animationDelay: `${Math.random() * 5}s`,
+        boxShadow: '0 0 4px rgba(168, 85, 247, 0.5)'
+      }}
+    />
+  )
+}
+
+
 
 export default function Hero() {
+
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* 3D Globe Background */}
@@ -15,21 +49,39 @@ export default function Hero() {
         <SimpleGlobe3D />
       </Suspense>
 
-      {/* Particle Background */}
+      {/* Static Particle Background */}
       <div className="absolute inset-0 pointer-events-none">
-        {Array.from({ length: 120 }, (_, i) => (
-          <div
+        {/* Main particles */}
+        {Array.from({ length: 180 }, (_, i) => (
+          <StaticParticle
             key={i}
-            className="absolute w-1 h-1 bg-white rounded-full opacity-30"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animation: `float ${3 + Math.random() * 4}s ease-in-out infinite`,
-              animationDelay: `${Math.random() * 5}s`,
-              boxShadow: '0 0 4px rgba(168, 85, 247, 0.5)'
-            }}
+            index={i}
+            size="w-1 h-1"
+            color="bg-white"
+            opacity="opacity-30"
           />
         ))}
+        {/* Small particles */}
+        {Array.from({ length: 80 }, (_, i) => (
+          <StaticParticle
+            key={`small-${i}`}
+            index={i}
+            size="w-0.5 h-0.5"
+            color="bg-purple-400"
+            opacity="opacity-20"
+          />
+        ))}
+        {/* Large particles */}
+        {Array.from({ length: 40 }, (_, i) => (
+          <StaticParticle
+            key={`large-${i}`}
+            index={i}
+            size="w-1.5 h-1.5"
+            color="bg-pink-400"
+            opacity="opacity-25"
+          />
+        ))}
+
       </div>
 
       {/* Social Media Icons */}
@@ -41,20 +93,20 @@ export default function Hero() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-4xl mx-auto mt-16"
+          className="max-w-4xl mx-auto mt-24 sm:mt-32"
         >
           {/* Main Heading */}
           <motion.h1 
-            className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 text-balance text-center"
+            className="text-5xl sm:text-7xl lg:text-8xl font-bold mb-6 text-balance text-center"
             style={{ 
-              background: "linear-gradient(135deg, #ffffff 0%, #a855f7 50%, #ec4899 100%)",
+              background: "linear-gradient(135deg, #ffffff 0%, #f8fafc 25%, #e2e8f0 50%, #cbd5e1 75%, #94a3b8 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
               filter: "drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1))"
             }}
           >
-            Bridge Your Brand to{" "}
+            Amplify Your Brand to{" "}
             <span className="neon-text">Gen Z & Millennials</span>
           </motion.h1>
 
@@ -63,10 +115,9 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl sm:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto text-balance text-center"
+            className="text-xl sm:text-2xl lg:text-3xl text-muted-foreground mb-8 max-w-4xl mx-auto text-balance text-center"
           >
-            Modern marketing agency. We create cultural moments 
-            that connect brands with the next generation.
+            We create cultural moments that connect brands with the next generation.
           </motion.p>
 
           {/* CTA Button */}
@@ -84,12 +135,19 @@ export default function Hero() {
                 z: 10
               }}
               whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              transition={{ type: "spring", stiffness: 600, damping: 25, duration: 0.2 }}
               style={{ transformStyle: "preserve-3d" }}
             >
-              <Button variant="neon" size="lg" className="group relative transform-gpu">
-                Book a Call
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <Button 
+                asChild 
+                variant="white" 
+                size="lg" 
+                className="group relative transform-gpu"
+              >
+                <a href={process.env.NEXT_PUBLIC_CALENDLY_URL || "https://calendly.com/krowdkraft-official/30min"} target="_blank" rel="noopener noreferrer">
+                  Book a Call
+                  <ArrowRight className="ml-2 h-4 w-4 pointer-events-none" />
+                </a>
               </Button>
             </motion.div>
           </motion.div>

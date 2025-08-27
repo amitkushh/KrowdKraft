@@ -18,7 +18,7 @@ export default function CommunityAbout() {
             <span className="neon-text">Community</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-balance">
-            Our community is more than just a network—it's a thriving ecosystem of 
+            Our community is more than just a network - it's a thriving ecosystem of 
             creators, innovators, and change-makers who are shaping the future.
           </p>
         </motion.div>

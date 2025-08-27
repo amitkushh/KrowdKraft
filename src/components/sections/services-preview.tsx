@@ -1,15 +1,16 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { ArrowRight, Users, Heart, Zap, Camera, GraduationCap, Search } from "lucide-react"
-import Link from "next/link"
+import { ArrowRight, Users, Globe, Flag, Camera, GraduationCap, Search } from "lucide-react"
 import { services } from "@/data/services"
+import SectionHeader from "@/components/common/section-header"
+import DynamicGrid from "@/components/common/dynamic-grid"
+import AnimatedButton from "@/components/common/animated-button"
 
 const iconMap = {
   Users,
-  Heart,
-  Zap,
+  Globe,
+  Flag,
   Camera,
   GraduationCap,
   Search,
@@ -19,23 +20,13 @@ export default function ServicesPreview() {
   return (
     <section className="py-24 bg-secondary/20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-            We Bridge Brands to{" "}
-            <span className="neon-text">Culture</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-balance">
-            From creator collabs to campus activations, we help brands connect 
-            authentically with the next generation.
-          </p>
-        </motion.div>
+        <SectionHeader
+          title="We Bridge Brands to"
+          highlightText="Culture"
+          description="From community design to campus activations, we help brands connect authentically with their target audiences."
+        />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-6xl mx-auto">
           {services.map((service, index) => {
             const Icon = iconMap[service.icon as keyof typeof iconMap] || Users
             
@@ -62,9 +53,7 @@ export default function ServicesPreview() {
                   </div>
                   <div className="ml-4">
                     <h3 className="text-lg font-semibold">{service.title}</h3>
-                    {service.price && (
-                      <p className="text-sm text-muted-foreground">{service.price}</p>
-                    )}
+
                   </div>
                 </div>
                 
@@ -90,6 +79,17 @@ export default function ServicesPreview() {
           })}
         </div>
 
+        <div className="text-center">
+          <AnimatedButton
+            href="/services"
+            variant="neon"
+            size="lg"
+            animation="scale"
+          >
+            Explore
+            <ArrowRight className="ml-2 h-4 w-4 pointer-events-none" />
+          </AnimatedButton>
+        </div>
 
       </div>
     </section>

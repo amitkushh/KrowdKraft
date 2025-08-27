@@ -101,9 +101,7 @@ export type ServiceCategory =
   | "creator-collabs"
   | "community-design"
   | "event-activations"
-  | "social-content"
   | "campus-waves"
-  | "research-sprints"
 
 export interface CaseStudy {
   id: string

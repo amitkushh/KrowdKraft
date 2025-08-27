@@ -94,10 +94,17 @@ export default function UpcomingEvents() {
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
               style={{ transformStyle: "preserve-3d" }}
+              className="cursor-pointer"
+              onClick={() => {
+                const footer = document.querySelector('#newsletter-section');
+                if (footer) {
+                  footer.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
             >
-              <Button variant="neon" size="lg" className="group transform-gpu">
+              <Button variant="neon" size="lg" className="group transform-gpu pointer-events-none">
                 Get Notified
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </motion.div>
           </div>

@@ -18,9 +18,7 @@ export default function WorkPage() {
     "creator-collabs",
     "community-design", 
     "event-activations",
-    "social-content",
-    "campus-waves",
-    "research-sprints"
+    "campus-waves"
   ]
 
   const filteredCaseStudies = filter === "all" 
@@ -163,7 +161,7 @@ export default function WorkPage() {
                   {/* CTA */}
                   <Button className="w-full group" variant="outline">
                     View Case Study
-                    <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    <ExternalLink className="ml-2 h-4 w-4 " />
                   </Button>
                 </div>
               </motion.article>
@@ -202,14 +200,14 @@ export default function WorkPage() {
               <span className="neon-text">Success Story</span>?
             </h2>
             <p className="text-xl text-muted-foreground mb-8">
-              Let's create a campaign that doesn't just reach Gen Z—it resonates with them. 
+              Let's create a campaign that doesn't just reach Gen Z - it resonates with them. 
               Every project starts with understanding your unique goals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild variant="neon" size="lg" className="group">
                 <a href="/contact">
                   Start Your Project
-                  <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ExternalLink className="ml-2 h-4 w-4 " />
                 </a>
               </Button>
               <Button asChild variant="outline" size="lg">

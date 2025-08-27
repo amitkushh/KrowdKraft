@@ -1,4 +1,4 @@
-// File: C:\Users\darsh\Downloads\KrowdKraft\src\app\community\page.tsx
+// File: C:\Users\darsh\Documents\GitHub\KrowdKraft\src\app\community\page.tsx
 import * as entry from '../../../../src/app/community/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

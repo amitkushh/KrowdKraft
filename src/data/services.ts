@@ -2,22 +2,6 @@ import { Service, ServiceCategory } from "@/types"
 
 export const services: Service[] = [
   {
-    id: "creator-collabs",
-    title: "Creator Collabs",
-    description: "Connect authentically with Gen Z through strategic creator partnerships. We identify, vet, and manage relationships with creators who genuinely align with your brand values.",
-    features: [
-      "Creator discovery & vetting",
-      "Campaign strategy & planning", 
-      "Content guidelines & brand safety",
-      "Performance tracking & analytics",
-      "Long-term relationship management"
-    ],
-    icon: "Users",
-    price: "From $5K/month",
-    duration: "3-12 months",
-    category: "creator-collabs" as ServiceCategory
-  },
-  {
     id: "community-design",
     title: "Community Design",
     description: "Build thriving communities around your brand. We design engagement strategies that turn customers into advocates and advocates into communities.",
@@ -28,9 +12,7 @@ export const services: Service[] = [
       "Moderation & community management",
       "Growth optimization & retention"
     ],
-    icon: "Heart",
-    price: "From $8K/month", 
-    duration: "6-18 months",
+    icon: "Globe",
     category: "community-design" as ServiceCategory
   },
   {
@@ -44,26 +26,8 @@ export const services: Service[] = [
       "Social media integration", 
       "Post-event amplification"
     ],
-    icon: "Zap",
-    price: "From $15K/event",
-    duration: "2-6 months",
+    icon: "Flag",
     category: "event-activations" as ServiceCategory
-  },
-  {
-    id: "social-content",
-    title: "Social & Content",
-    description: "Craft scroll-stopping content that speaks Gen Z's language. Our team stays ahead of trends to keep your brand culturally relevant and engaging.",
-    features: [
-      "Content strategy & planning",
-      "Creative production & editing",
-      "Trend analysis & adaptation",
-      "Platform optimization",
-      "Performance analytics"
-    ],
-    icon: "Camera", 
-    price: "From $3K/month",
-    duration: "3-12 months",
-    category: "social-content" as ServiceCategory
   },
   {
     id: "campus-waves",
@@ -77,25 +41,7 @@ export const services: Service[] = [
       "Student insight research"
     ],
     icon: "GraduationCap",
-    price: "From $4K/month",
-    duration: "Semester-based",
     category: "campus-waves" as ServiceCategory
-  },
-  {
-    id: "research-sprints", 
-    title: "Research Sprints",
-    description: "Get rapid insights into Gen Z behavior and preferences. Our research sprints deliver actionable intelligence to inform your marketing strategy.",
-    features: [
-      "Rapid user research studies",
-      "Trend analysis & forecasting",
-      "Competitive intelligence",
-      "Consumer insight reports",
-      "Strategic recommendations"
-    ],
-    icon: "Search",
-    price: "From $2K/sprint",
-    duration: "2-4 weeks",
-    category: "research-sprints" as ServiceCategory
   }
 ]
 

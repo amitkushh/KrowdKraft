@@ -18,7 +18,7 @@ export default function About() {
             About{" "}
             <span className="neon-text">KrowdKraft</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-balance">
+          <p className="text-xl text-muted-foreground max-w-5xl mx-auto text-balance">
             We are a modern marketing agency that specializes in connecting brands 
             with Gen Z and Millennials through authentic cultural moments and innovative campaigns.
           </p>
@@ -43,26 +43,10 @@ export default function About() {
             </p>
             <p className="text-muted-foreground leading-relaxed">
               Our team combines deep cultural insights with cutting-edge marketing strategies 
-              to create campaigns that don't just reach your audience—they genuinely connect 
+              to create campaigns that don't just reach your audience - they genuinely connect 
               with them.
             </p>
-            
-            <motion.div
-              whileHover={{ 
-                scale: 1.05,
-                rotateX: 3,
-                rotateY: 3,
-                z: 10
-              }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              style={{ transformStyle: "preserve-3d" }}
-            >
-              <Button variant="neon" size="lg" className="group transform-gpu">
-                Learn More About Us
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-            </motion.div>
+
           </motion.div>
 
           {/* Values */}

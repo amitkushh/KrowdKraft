@@ -203,7 +203,7 @@ export default function CaseStudiesCarousel() {
             <Button asChild variant="neon" size="lg" className="group transform-gpu">
               <Link href="/work">
                 View All Case Studies
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </motion.div>

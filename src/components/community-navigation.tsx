@@ -75,7 +75,7 @@ export default function CommunityNavigation() {
             >
               <Button asChild variant="outline" size="sm" className="ml-4 border-neon/30 hover:bg-neon/10">
                 <Link href="/">
-                  <Home className="mr-2 h-4 w-4" />
+                  <Home className="mr-2 h-4 w-4 pointer-events-none" />
                   Home
                 </Link>
               </Button>
@@ -89,7 +89,7 @@ export default function CommunityNavigation() {
               aria-label="Toggle menu"
               className="p-2 hover:bg-white/10 rounded-lg transition-colors"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? <X className="h-6 w-6 pointer-events-none" /> : <Menu className="h-6 w-6 pointer-events-none" />}
             </button>
           </div>
         </div>
@@ -130,7 +130,7 @@ export default function CommunityNavigation() {
               >
                 <Button asChild variant="outline" size="sm" className="w-full border-neon/30 hover:bg-neon/10">
                   <Link href="/" onClick={() => setIsOpen(false)}>
-                    <Home className="mr-2 h-4 w-4" />
+                    <Home className="mr-2 h-4 w-4 pointer-events-none" />
                     Home
                   </Link>
                 </Button>

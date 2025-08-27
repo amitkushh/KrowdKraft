@@ -14,7 +14,6 @@ const navItems = [
   { href: "#services", label: "Services" },
   { href: "#community", label: "Community" },
   { href: "#team", label: "Team" },
-  { href: "#contact", label: "Contact" },
   { href: "#faq", label: "FAQ" },
 ]
 
@@ -23,11 +22,19 @@ export default function Navigation() {
   const pathname = usePathname()
 
   const scrollToSection = (href: string) => {
+    setIsOpen(false) // Close mobile menu after clicking
+    
+    // If we're not on the home page, navigate to home page first
+    if (pathname !== '/') {
+      window.location.href = `/${href}`
+      return
+    }
+    
+    // If we're on home page, scroll to section
     const element = document.querySelector(href)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
     }
-    setIsOpen(false) // Close mobile menu after clicking
   }
 
   return (
@@ -39,21 +46,24 @@ export default function Navigation() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 group">
+          <Link 
+            href="/"
+            className="flex items-center space-x-2 group cursor-pointer"
+          >
             <motion.div 
               whileHover={{ scale: 1.1 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.2 }}
               className="w-12 h-12 relative"
             >
               <Image
-                src="/logo.png"
+                src="/KrowdKraft_Logo.png"
                 alt="KrowdKraft Logo"
                 width={48}
                 height={48}
                 className="object-contain"
               />
             </motion.div>
-            <span className="font-bold text-2xl neon-text group-hover:text-neon transition-colors">
+            <span className="font-bold text-2xl neon-text group-hover:text-neon transition-colors duration-300">
               KrowdKraft
             </span>
           </Link>
@@ -64,23 +74,23 @@ export default function Navigation() {
               <button
                 key={item.href}
                 onClick={() => scrollToSection(item.href)}
-                className="text-muted-foreground hover:text-foreground transition-colors relative group cursor-pointer"
+                className="text-muted-foreground hover:text-foreground transition-colors duration-200 relative group cursor-pointer"
               >
                 {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-neon transition-all group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-neon transition-all duration-200 group-hover:w-full" />
               </button>
             ))}
             
-            {/* Join Community Button - Only on Home Page */}
-            {pathname === '/' && (
+            {/* Join Community Button */}
+            {(
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                transition={{ type: "spring", stiffness: 600, damping: 25, duration: 0.2 }}
               >
                 <Button asChild variant="neon" size="sm" className="ml-4">
-                  <Link href="/community">
-                    <Users className="mr-2 h-4 w-4" />
+                  <Link href="/join-community">
+                    <Users className="mr-2 h-4 w-4 pointer-events-none" />
                     Join Our Community
                   </Link>
                 </Button>
@@ -95,7 +105,7 @@ export default function Navigation() {
               aria-label="Toggle menu"
               className="p-2 hover:bg-white/10 rounded-lg transition-colors"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? <X className="h-6 w-6 pointer-events-none" /> : <Menu className="h-6 w-6 pointer-events-none" />}
             </button>
           </div>
         </div>
@@ -120,15 +130,15 @@ export default function Navigation() {
                 >
                   <button
                     onClick={() => scrollToSection(item.href)}
-                    className="block text-muted-foreground hover:text-foreground transition-colors py-2 w-full text-left"
+                    className="block text-muted-foreground hover:text-foreground transition-colors duration-200 py-2 w-full text-left"
                   >
                     {item.label}
                   </button>
                 </motion.div>
               ))}
               
-              {/* Mobile Join Community Button - Only on Home Page */}
-              {pathname === '/' && (
+              {/* Mobile Join Community Button */}
+              {(
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -136,8 +146,8 @@ export default function Navigation() {
                   className="pt-4 border-t border-white/10"
                 >
                   <Button asChild variant="neon" size="sm" className="w-full">
-                    <Link href="/community" onClick={() => setIsOpen(false)}>
-                      <Users className="mr-2 h-4 w-4" />
+                    <Link href="/join-community" onClick={() => setIsOpen(false)}>
+                      <Users className="mr-2 h-4 w-4 pointer-events-none" />
                       Join Our Community
                     </Link>
                   </Button>

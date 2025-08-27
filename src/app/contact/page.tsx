@@ -23,12 +23,9 @@ const contactSchema = z.object({
 type ContactFormData = z.infer<typeof contactSchema>
 
 const services = [
-  "Creator Collabs",
   "Community Design", 
   "Event Activations",
-  "Social & Content",
   "Campus Waves",
-  "Research Sprints",
   "Custom Project"
 ]
 
@@ -138,7 +135,7 @@ export default function ContactPage() {
                 <div className="space-y-4">
                   <div className="flex items-center space-x-3">
                     <Mail className="h-5 w-5 text-neon" />
-                    <span>hello@krowdkraft.com</span>
+                    <span>krowdkraft.official@gmail.com</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Phone className="h-5 w-5 text-neon" />

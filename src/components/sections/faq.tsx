@@ -11,7 +11,7 @@ export default function FAQ() {
   const faqs = [
     {
       question: "What makes KrowdKraft different from other marketing agencies?",
-      answer: "We specialize exclusively in Gen Z and Millennial marketing. Our team consists of cultural insiders who understand the nuances, platforms, and communication styles that resonate with these generations. We don't just reach your audience—we genuinely connect with them."
+      answer: "We specialize exclusively in Gen Z and Millennial marketing. Our team consists of cultural insiders who understand the nuances, platforms, and communication styles that resonate with these generations. We don't just reach your audience - we genuinely connect with them."
     },
     {
       question: "How do you measure success for campaigns targeting Gen Z and Millennials?",
@@ -19,7 +19,7 @@ export default function FAQ() {
     },
     {
       question: "What platforms do you typically work with?",
-      answer: "We work across all major platforms where Gen Z and Millennials are active: TikTok, Instagram, Twitter, YouTube, Discord, Twitch, and emerging platforms. Our strategy is platform-agnostic—we go where your audience is and adapt our approach accordingly."
+      answer: "We work across all major platforms where Gen Z and Millennials are active: TikTok, Instagram, Twitter, YouTube, Discord, Twitch, and emerging platforms. Our strategy is platform-agnostic - we go where your audience is and adapt our approach accordingly."
     },
     {
       question: "How long does it typically take to see results?",
@@ -36,10 +36,6 @@ export default function FAQ() {
     {
       question: "How do you stay ahead of trends?",
       answer: "Our team lives and breathes digital culture. We're active community members ourselves, have insider connections across platforms, and use advanced social listening tools to spot trends before they go mainstream."
-    },
-    {
-      question: "What's included in your service packages?",
-      answer: "Our packages typically include strategy development, content creation, community management, influencer partnerships, performance tracking, and regular optimization. We customize each package based on your specific needs and goals."
     }
   ]
 
@@ -122,22 +118,27 @@ export default function FAQ() {
           <p className="text-lg text-muted-foreground mb-6">
             Still have questions? We'd love to chat!
           </p>
-          <motion.div
-            whileHover={{ 
-              scale: 1.05,
-              rotateX: 3,
-              rotateY: 3,
-              z: 10
-            }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            style={{ transformStyle: "preserve-3d" }}
+          <Button 
+            asChild 
+            variant="neon" 
+            size="lg" 
+            className="group transform-gpu"
           >
-            <Button variant="neon" size="lg" className="group transform-gpu">
+            <motion.button
+              whileHover={{ 
+                scale: 1.05,
+                rotateX: 3,
+                rotateY: 3,
+                z: 10
+              }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              style={{ transformStyle: "preserve-3d" }}
+            >
               Book a Call
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Button>
-          </motion.div>
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </motion.button>
+          </Button>
         </motion.div>
       </div>
     </section>

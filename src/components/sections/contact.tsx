@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Mail, Phone, MapPin, MessageCircle } from "lucide-react"
+import { Mail, Phone, Globe, MessageCircle } from "lucide-react"
 import { useState } from "react"
 
 export default function Contact() {
@@ -40,7 +40,7 @@ export default function Contact() {
             Let's{" "}
             <span className="neon-text">Connect</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-balance">
+          <p className="text-xl text-muted-foreground max-w-5xl mx-auto text-balance">
             Ready to bridge your brand to the next generation? 
             Let's create something amazing together.
           </p>
@@ -54,15 +54,7 @@ export default function Contact() {
             viewport={{ once: true }}
             className="space-y-6 h-full"
           >
-            <motion.div
-              whileHover={{ 
-                scale: 1.02,
-                rotateX: 2,
-                rotateY: 2
-              }}
-              style={{ transformStyle: "preserve-3d" }}
-              className="glass-card p-8 transform-gpu h-full flex flex-col"
-            >
+            <div className="glass-card p-8 h-full flex flex-col">
               <h3 className="text-2xl font-bold mb-6">Send us a message</h3>
               
               <form onSubmit={handleSubmit} className="space-y-4 flex-1 flex flex-col">
@@ -125,7 +117,7 @@ export default function Contact() {
                   </Button>
                 </motion.div>
               </form>
-            </motion.div>
+            </div>
           </motion.div>
 
           {/* Contact Info */}
@@ -141,8 +133,8 @@ export default function Contact() {
                 {
                   icon: Mail,
                   title: "Email Us",
-                  content: "hello@krowdkraft.com",
-                  link: "mailto:hello@krowdkraft.com"
+                  content: "krowdkraft.official@gmail.com",
+                  link: "mailto:krowdkraft.official@gmail.com"
                 },
                 {
                   icon: Phone,
@@ -151,10 +143,10 @@ export default function Contact() {
                   link: "tel:+15551234567"
                 },
                 {
-                  icon: MapPin,
+                  icon: Globe,
                   title: "Visit Us",
-                  content: "San Francisco, CA",
-                  link: "#"
+                  content: "www.krowdkraft.com",
+                  link: "https://www.krowdkraft.com"
                 }
               ].map((item, index) => (
               <motion.div
