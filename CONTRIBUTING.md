@@ -52,6 +52,12 @@ If you are new to open source contribution:
 4. Check if anyone is already working on it
 5. Comment on the issue to express your interest
 
+**Creating New Issues**
+If you found a bug or have a feature request that is not already reported:
+
+- **For Bugs**: Use our [Bug Report Template](https://github.com/DarshanKrishna-DK/KrowdKraft/issues/new?assignees=&labels=bug&template=bug_report.md&title=Bug%3A+%5BBRIEF+DESCRIPTION%5D)
+- **For Features**: Use our [Feature Request Template](https://github.com/DarshanKrishna-DK/KrowdKraft/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=Feature%3A+%5BBRIEF+DESCRIPTION%5D)
+
 ### Step 2: Fork and Clone
 
 1. **Fork the repository**
@@ -62,7 +68,7 @@ If you are new to open source contribution:
    
    ```bash
    git clone https://github.com/YOUR_USERNAME/KrowdKraft.git
-   cd KrowdKraft
+cd KrowdKraft
    ```
 
 3. **Add the original repository as upstream**
@@ -254,27 +260,15 @@ npm run build
 
 4. **Fill out the PR template**:
    
-   ```markdown
-   ## Description
-   Brief description of changes made
+   Our pull request template will automatically load and guide you through providing:
+   - Description of changes made
+   - Type of change (bug fix, feature, etc.)
+   - Testing checklist
+   - Screenshots for UI changes
+   - Link to related issue
+   - Code quality and accessibility checks
    
-   ## Type of Change
-   - [ ] Bug fix
-   - [ ] New feature
-   - [ ] Documentation update
-   - [ ] Style/UI improvement
-   
-   ## Testing
-   - [ ] Tested locally
-   - [ ] No console errors
-   - [ ] Responsive design verified
-   
-   ## Screenshots (if applicable)
-   Add screenshots of UI changes
-   
-   ## Related Issue
-   Closes #issue-number
-   ```
+   Please fill out all relevant sections to help reviewers understand your contribution.
 
 ### Step 3: Address Review Feedback
 

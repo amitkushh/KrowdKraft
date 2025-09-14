@@ -6,13 +6,15 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.0-38B2AC?logo=tailwind-css)](https://tailwindcss.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
-> A modern marketing agency website bridging brands to Gen Z culture through authentic community experiences.
+> Amplifying brands to Gen Z & Millennials through authentic community experiences| Powered by our developer community 
 
 ## About KrowdKraft
 
-KrowdKraft is a cutting-edge marketing agency that specializes in connecting brands with Gen Z and Millennial audiences. We create authentic community experiences through creator collaborations, event activations, and innovative digital campaigns.
+KrowdKraft is a community-driven organization dedicated to empowering individuals and businesses through technology, collaboration, and impactful events. We aim to amplify our partners' voices and bridge the gap between their brands and the GenZ & Millennial generations.
 
-Our website showcases our services, past collaborations, and provides a platform for potential partners to connect with us. Built with modern web technologies, it features dynamic content, interactive components, and a responsive design that reflects our commitment to staying ahead of digital trends.
+At the heart of our mission is a vibrant and growing developer community. We believe in the power of open-source and collaborative learning. This repository is not just the codebase for our official website - it's a living project where students, professionals, and tech enthusiasts can connect, build, and grow together. By contributing, you are directly helping us enhance a platform that supports and uplifts the next generation of tech talent.
+
+We are excited to welcome you to our community and look forward to building a better future, together.
 
 ## Tech Stack
 
@@ -62,14 +64,20 @@ Before you begin, ensure you have the following installed:
    Create a `.env.local` file in the root directory:
    
    ```bash
-   # Email configuration (optional for development)
-   EMAIL_USER=your_email@gmail.com
-   EMAIL_PASS=your_app_password
+   # Email Configuration (Required for contact forms)
+   EMAIL_USER=example@gmail.com
+   EMAIL_PASS=your_16_character_app_password
    
-   # Social media links (optional)
+   # Google Sheets Integration (Required for newsletter and partnerships)
+   GOOGLE_SHEETS_WEBHOOK_URL=https://script.google.com/macros/s/EXAMPLE_ID/exec
+   GOOGLE_SHEETS_PARTNERSHIP_WEBHOOK_URL=https://script.google.com/macros/s/EXAMPLE_ID/exec
+   
+   # Social Media Links (Public URLs - keep as provided)
    NEXT_PUBLIC_LINKEDIN_URL=https://www.linkedin.com/company/krowdkraft/
    NEXT_PUBLIC_TWITTER_URL=https://x.com/KrowdKraft_
    NEXT_PUBLIC_INSTAGRAM_URL=https://www.instagram.com/krowdkraft_/
+   NEXT_PUBLIC_WHATSAPP_COMMUNITY_URL=https://chat.whatsapp.com/EXAMPLE_LINK
+   NEXT_PUBLIC_CALENDLY_URL=https://calendly.com/krowdkraft-official/30min
    ```
 
 5. **Start the development server**
@@ -150,6 +158,16 @@ If you have questions or need help getting started:
 ## Acknowledgments
 
 Thank you to all the contributors who help make KrowdKraft better! Your contributions, whether big or small, are greatly appreciated.
+
+## Connect With Us
+
+Stay updated with KrowdKraft and join our community:
+
+- **LinkedIn**: [KrowdKraft](https://www.linkedin.com/company/krowdkraft/)
+- **Twitter/X**: [@KrowdKraft_](https://x.com/KrowdKraft_)
+- **Instagram**: [@krowdkraft_](https://www.instagram.com/krowdkraft_/)
+- **WhatsApp Community**: [Join our community](https://chat.whatsapp.com/Ko9hqFs7hhtLJY1nePhkNO)
+- **Schedule a Meeting**: [Book a call with us](https://calendly.com/krowdkraft-official/30min)
 
 ---
 
