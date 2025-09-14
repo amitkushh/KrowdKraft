@@ -6,9 +6,14 @@ import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 
 export async function POST(request: NextRequest) {
+  let body: any
+  let type: string = 'unknown'
+  let data: any = null
+
   try {
-    const body = await request.json()
-    const { type, data } = body
+    body = await request.json()
+    type = body.type || 'unknown'
+    data = body.data
 
     console.log(`📧 Form submission received - Type: ${type}`)
     console.log('📝 Form data:', data)
@@ -154,7 +159,7 @@ Project Details: ${data.message}
     console.error('❌ Email sending failed:', error)
     
     // Log the form data for manual processing
-    console.log('📝 Logging form data for manual processing:', { type: body?.type, data: body?.data })
+    console.log('📝 Logging form data for manual processing:', { type: type || 'unknown', data: data || 'unavailable' })
     
     return NextResponse.json({ 
       success: true, 

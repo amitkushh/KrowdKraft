@@ -49,11 +49,23 @@ export default function Team() {
     },
     {
       name: "Amrutha Druthi",
-      role: "Operations Lead",
+      role: "Community Manager",
       bio: "A detail-oriented planner who thrives on smart strategies",
       image: "/api/placeholder/300/300",
       social: {
         linkedin: "https://www.linkedin.com/in/amrutha-druthi-8421a8225/",
+        twitter: null,
+        instagram: null,
+        medium: null
+      }
+    },
+    {
+      name: "Tharun Kumar",
+      role: "Community Moderator",
+      bio: "Focused on growing vibrant communities by providing engaging content and utilizing platform features to streamline management and boost engagement.",
+      image: "/api/placeholder/300/300",
+      social: {
+        linkedin: "https://www.linkedin.com/in/tharun-kumar-96ba22283/",
         twitter: null,
         instagram: null,
         medium: null

@@ -7,9 +7,10 @@ node_modules/
 /coverage
 
 # Next.js
-/.next/
+.next
 /out/
 .vercel
+.dist/
 
 # Production builds
 build/
@@ -35,6 +36,7 @@ lerna-debug.log*
 *.swp
 *.swo
 *~
+.cursor/
 
 # OS generated files
 .DS_Store
@@ -47,6 +49,7 @@ Thumbs.db
 
 # TypeScript
 *.tsbuildinfo
+tsconfig.tsbuildinfo
 
 # Cache directories
 .npm
@@ -70,14 +73,5 @@ logs/
 *.bak
 *.backup
 
-# Unused/deprecated files (for this project)
-env.template
-DEPLOYMENT_INSTRUCTIONS.md
-form-submissions-webhook.js
-
-# Additional build artifacts
-tsconfig.tsbuildinfo
-
-# Editor/IDE specific
-.cursor/
-.vscode/settings.json
+# Additional Next.js files
+.next.config.js.backup

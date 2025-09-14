@@ -10,7 +10,7 @@ interface Event {
   attendees: string
   type: string
   description: string
-  image: string
+  image?: string
   backgroundImage?: string
 }
 
