@@ -27,6 +27,17 @@ export interface Event {
   updatedAt: string
 }
 
+export interface PastEvent {
+  title: string;
+  date: string;
+  location: string;
+  attendees: string;
+  type: string;
+  description: string;
+  image?: string;
+  backgroundImage?: string;
+}
+
 export interface Organizer {
   id: string
   name: string
