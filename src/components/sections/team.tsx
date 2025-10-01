@@ -17,85 +17,14 @@ const XIcon = ({ className }: { className?: string }) => (
     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
   </svg>
 )
+
 import { useState, useEffect } from "react"
+import { teamMembers } from "@/data/team"
 
 export default function Team() {
   const [currentIndex, setCurrentIndex] = useState(0)
   
-  const teamMembers = [
-    {
-      name: "Darshan Krishna",
-      role: "Founder & CEO",
-      bio: "Passionate community contributor who aims to spread importance of community & build a strong community culture",
-      image: "/api/placeholder/300/300",
-      social: {
-        linkedin: "https://www.linkedin.com/in/darshan-krishna-dk/",
-        twitter: "https://x.com/CrypTech_DK",
-        instagram: "https://www.instagram.com/cryptech_dk/",
-        medium: "https://medium.com/@cryptech_dk"
-      }
-    },
-    {
-      name: "Deepak N",
-      role: "Co-Founder",
-      bio: "Focused on growing the developer ecosystem by guiding young talent and sharing experience through community events.",
-      image: "/api/placeholder/300/300",
-      social: {
-        linkedin: "https://www.linkedin.com/in/deepak--n/",
-        twitter: null,
-        instagram: null,
-        medium: null
-      }
-    },
-    {
-      name: "Amrutha Druthi",
-      role: "Community Manager",
-      bio: "A detail-oriented planner who thrives on smart strategies",
-      image: "/api/placeholder/300/300",
-      social: {
-        linkedin: "https://www.linkedin.com/in/amrutha-druthi-8421a8225/",
-        twitter: null,
-        instagram: null,
-        medium: null
-      }
-    },
-    {
-      name: "Tharun Kumar",
-      role: "Community Moderator",
-      bio: "Focused on growing vibrant communities by providing engaging content and utilizing platform features to streamline management and boost engagement.",
-      image: "/api/placeholder/300/300",
-      social: {
-        linkedin: "https://www.linkedin.com/in/tharun-kumar-96ba22283/",
-        twitter: null,
-        instagram: null,
-        medium: null
-      }
-    },
-    {
-      name: "Gautham Krishna",
-      role: "Media Lead",
-      bio: "Loves photography and is always ready to capture moments that tell a story.",
-      image: "/api/placeholder/300/300",
-      social: {
-        linkedin: "https://www.linkedin.com/in/gautham-krishna-3243161a0/",
-        twitter: "https://x.com/gkrishnak01",
-        instagram: null,
-        medium: null
-      }
-    },
-    {
-      name: "Viha Shomikha",
-      role: "Community Manager",
-      bio: "Experienced brand ambassador passionate about creating genuine connections and growing communities.",
-      image: "/api/placeholder/300/300",
-      social: {
-        linkedin: "https://www.linkedin.com/in/vihashomikhaas/",
-        twitter: "https://x.com/VihaTacklesBugs",
-        instagram: null,
-        medium: null
-      }
-    }
-  ]
+  // teamMembers is now imported from @/data/team
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % teamMembers.length)
@@ -256,15 +185,24 @@ export default function Team() {
                     <div className={`glass-card p-6 text-center transform-gpu cursor-pointer w-72 transition-all duration-300 ${
                       relativeIndex === 0 ? 'border-2 border-neon/30 shadow-lg shadow-neon/20' : 'border border-white/10'
                     }`}>
-                      {/* Avatar placeholder */}
+                      {/* Avatar image or fallback */}
                       <div className={`w-24 h-24 bg-gradient-to-br from-neon/20 to-purple-500/20 rounded-full mx-auto mb-4 flex items-center justify-center transition-all duration-300 ${
                         relativeIndex === 0 ? 'ring-2 ring-neon/40 shadow-lg shadow-neon/30' : ''
                       }`}>
-                        <div className="w-16 h-16 bg-neon/30 rounded-full flex items-center justify-center">
-                          <span className="text-xl font-bold text-white">
-                            {member.name.split(' ').map(n => n[0]).join('')}
-                          </span>
-                        </div>
+                        {member.image ? (
+                          <img
+                            src={member.image}
+                            alt={member.name}
+                            className="w-20 h-20 object-cover rounded-full border-2 border-white/20 shadow"
+                            onError={e => { e.currentTarget.style.display = 'none'; }}
+                          />
+                        ) : (
+                          <div className="w-16 h-16 bg-neon/30 rounded-full flex items-center justify-center">
+                            <span className="text-xl font-bold text-white">
+                              {member.name.split(' ').map(n => n[0]).join('')}
+                            </span>
+                          </div>
+                        )}
                       </div>
 
                       <h3 className={`text-xl font-semibold mb-1 transition-colors duration-300 ${
