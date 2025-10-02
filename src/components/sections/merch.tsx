@@ -1,5 +1,5 @@
 import SubscribeForm from "./subscribe-form"
-import { ShieldCheck, Users, Zap, ChevronDown } from "lucide-react"
+import { ShieldCheck, Users, Zap } from "lucide-react"
 
 export default function MerchSection() {
   return (
@@ -13,37 +13,34 @@ export default function MerchSection() {
       "
     >
       <div className="absolute inset-0 pointer-events-none" aria-hidden />
+
       <div className="mx-auto max-w-5xl">
-        {/* Neon headline */}
-        <div className="relative mb-10 text-center">
-          <div
-            className="pointer-events-none absolute inset-0 -z-10 blur-3xl opacity-50"
-            style={{
-              background:
-                "radial-gradient(60% 60% at 50% 40%, rgba(56,189,248,.25) 0%, rgba(192,132,252,.2) 35%, rgba(0,0,0,0) 70%)",
-            }}
-            aria-hidden
-          />
-          <h2 className="text-4xl md:text-6xl font-semibold tracking-tight">
-            <span className="bg-clip-text text-transparent bg-[linear-gradient(90deg,#22d3ee,45%,#a78bfa)] drop-shadow-[0_0_12px_rgba(167,139,250,0.35)]">
-              Merch Dropping Soon
+        {/* Section title — match site style: white + purple with subtle glow */}
+        <div className="text-center mb-10">
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight">
+            <span className="text-white">Merch</span>{" "}
+            <span className="text-purple-400 drop-shadow-[0_0_18px_rgba(168,85,247,0.45)]">
+              Dropping Soon
             </span>
           </h2>
-          <p className="mt-4 text-base md:text-lg text-zinc-300">
+
+          <p className="mt-4 text-base md:text-lg text-muted-foreground">
             Limited Runs • Neon Aesthetic • Early Access for Subscribers
           </p>
         </div>
 
         {/* Glass card */}
         <div className="mx-auto max-w-2xl rounded-2xl border border-white/10 bg-white/[.045] backdrop-blur-xl shadow-[0_0_0_1px_rgba(255,255,255,0.06)_inset,0_8px_30px_rgba(2,8,23,0.45)] p-6 md:p-8">
-          <h3 className="text-xl md:text-2xl font-medium text-white text-center">Get Notified</h3>
+          <h3 className="text-xl md:text-2xl font-semibold text-white text-center">
+            Get Notified
+          </h3>
           <p className="mt-2 text-sm text-zinc-400 text-center">
             Be the first to rep KrowdKraft merch. Members-only perks, early access drops, and exclusive discounts.
           </p>
 
           <SubscribeForm />
 
-          {/* Credibility row (no made-up metrics) */}
+          {/* Credibility row */}
           <div className="mt-5 flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-zinc-400">
             <div className="flex items-center gap-2">
               <Users className="w-4 h-4 text-cyan-400" />
@@ -58,13 +55,6 @@ export default function MerchSection() {
               <span>Privacy-first, no spam</span>
             </div>
           </div>
-        </div>
-
-        {/* Explore link to next section */}
-        <div className="mt-10 text-center">
-          <a href="#community" className="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition">
-            Explore More <ChevronDown className="h-4 w-4" />
-          </a>
         </div>
       </div>
     </section>
