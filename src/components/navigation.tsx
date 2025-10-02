@@ -13,7 +13,7 @@ const navItems = [
   { href: "#about", label: "About" },
   { href: "#services", label: "Services" },
   { href: "#community", label: "Community" },
-  { href: "/merch", label: "Merch" },
+ { href: "#merch", label: "Merch" },
   { href: "#team", label: "Team" },
   { href: "#faq", label: "FAQ" },
 ] as const
@@ -22,7 +22,7 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
 
-  const scrollToSection = (href: string) => {
+   const scrollToSection = (href: string) => {
     setIsOpen(false)
     if (href.startsWith("/")) {
       window.location.href = href
@@ -35,7 +35,6 @@ export default function Navigation() {
     const el = document.querySelector(href)
     if (el) el.scrollIntoView({ behavior: "smooth" })
   }
-
   const baseLink =
     "text-muted-foreground hover:text-foreground transition-colors duration-200 relative group cursor-pointer"
   const underline =
@@ -43,6 +42,8 @@ export default function Navigation() {
 
   return (
     <motion.nav
+      role="navigation"
+      aria-label="Main"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10"
