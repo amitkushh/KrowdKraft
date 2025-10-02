@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import Parser from "rss-parser";
 
+export const revalidate = 604800; // 7 days (in seconds)
+
 const MEDIUM_FEED = "https://medium.com/feed/@cryptech_dk";
 const parser = new Parser();
 
