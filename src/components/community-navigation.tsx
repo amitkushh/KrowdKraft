@@ -11,6 +11,7 @@ const communityNavItems = [
   { href: "#about", label: "About" },
   { href: "#past-events", label: "Past Events" },
   { href: "#upcoming-events", label: "Upcoming" },
+  { href: "#latest-articles", label: "Latest Articles" },
   { href: "#event-proposal", label: "Submit Proposal" },
   { href: "#collaborations", label: "Collaborations" },
 ]
