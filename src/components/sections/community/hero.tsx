@@ -207,7 +207,7 @@ export default function CommunityHero() {
           >
             {[
               { number: "900+", label: "Members" },
-              { number: "5", label: "Events" },
+              { number: "6", label: "Events" },
             ].map((stat, index) => (
               <motion.div 
                 key={stat.label}

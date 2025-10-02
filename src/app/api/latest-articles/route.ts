@@ -3,7 +3,7 @@ import Parser from "rss-parser";
 
 export const revalidate = 604800; // 7 days (in seconds)
 
-const MEDIUM_FEED = "https://medium.com/feed/@cryptech_dk";
+const MEDIUM_FEED = `https://medium.com/feed/@${process.env.MEDIUM_USER_PROFILE}`;
 const parser = new Parser();
 
 export async function GET() {

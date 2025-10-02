@@ -35,7 +35,7 @@ export default function Community() {
             {
               icon: Calendar,
               title: "Events Conducted",
-              metric: "5",
+              metric: "6",
               description: "Successful seminars and competitions"
             },
             {
