@@ -116,6 +116,50 @@ KrowdKraft/
 └── docs/                    # Documentation files
 ```
 
+## 📊 Community Stats
+
+<div align="center">
+
+![GitHub stars](https://img.shields.io/github/stars/DarshanKrishna-DK/KrowdKraft?style=for-the-badge&logo=github&color=yellow)
+![GitHub forks](https://img.shields.io/github/forks/DarshanKrishna-DK/KrowdKraft?style=for-the-badge&logo=github&color=blue)
+![GitHub issues](https://img.shields.io/github/issues/DarshanKrishna-DK/KrowdKraft?style=for-the-badge&logo=github&color=red)
+![GitHub closed issues](https://img.shields.io/github/issues-closed/DarshanKrishna-DK/KrowdKraft?style=for-the-badge&logo=github&color=green)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/DarshanKrishna-DK/KrowdKraft?style=for-the-badge&logo=github&color=orange)
+![GitHub contributors](https://img.shields.io/github/contributors/DarshanKrishna-DK/KrowdKraft?style=for-the-badge&logo=github&color=purple)
+
+</div>
+
+### Repository Statistics
+
+| Metric | Count |
+|--------|-------|
+| ⭐ **Stars** | ![Stars](https://img.shields.io/github/stars/DarshanKrishna-DK/KrowdKraft?style=flat-square) |
+| 🍴 **Forks** | ![Forks](https://img.shields.io/github/forks/DarshanKrishna-DK/KrowdKraft?style=flat-square) |
+| 🐛 **Open Issues** | ![Open Issues](https://img.shields.io/github/issues/DarshanKrishna-DK/KrowdKraft?style=flat-square) |
+| ✅ **Closed Issues** | ![Closed Issues](https://img.shields.io/github/issues-closed/DarshanKrishna-DK/KrowdKraft?style=flat-square) |
+| 🔀 **Pull Requests** | ![Pull Requests](https://img.shields.io/github/issues-pr/DarshanKrishna-DK/KrowdKraft?style=flat-square) |
+| 👥 **Contributors** | ![Contributors](https://img.shields.io/github/contributors/DarshanKrishna-DK/KrowdKraft?style=flat-square) |
+| 📝 **Last Commit** | ![Last Commit](https://img.shields.io/github/last-commit/DarshanKrishna-DK/KrowdKraft?style=flat-square) |
+| 📦 **Repository Size** | ![Repo Size](https://img.shields.io/github/repo-size/DarshanKrishna-DK/KrowdKraft?style=flat-square) |
+
+### 🏆 Top Contributors
+
+<!-- CONTRIBUTORS:START -->
+This section will be automatically updated by GitHub Actions to show our top contributors with their avatars and contribution counts.
+<!-- CONTRIBUTORS:END -->
+
+<div align="center">
+  
+[![Contributors Graph](https://contrib.rocks/image?repo=DarshanKrishna-DK/KrowdKraft)](https://github.com/DarshanKrishna-DK/KrowdKraft/graphs/contributors)
+
+</div>
+
+<div align="center">
+  <i>📊 Stats updated automatically via GitHub Actions • Last updated: Auto-generated</i>
+</div>
+
+---
+
 ## How to Contribute
 
 We welcome contributions from developers of all skill levels! Whether you are fixing bugs, adding new features, improving documentation, or enhancing the user experience, your contributions are valuable.
