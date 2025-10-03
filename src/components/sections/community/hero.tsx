@@ -264,6 +264,20 @@ export default function CommunityHero() {
           >
             {githubStats ? (
               [
+                // Community Stats
+                { 
+                  number: "900+", 
+                  label: "Members", 
+                  icon: Users,
+                  color: "text-blue-400"
+                },
+                { 
+                  number: "6", 
+                  label: "Events", 
+                  icon: PlusCircle,
+                  color: "text-purple-400"
+                },
+                // GitHub Stats
                 { 
                   number: githubStats.stars.toString(), 
                   label: "Stars", 
@@ -285,14 +299,8 @@ export default function CommunityHero() {
                 { 
                   number: githubStats.contributors.toString(), 
                   label: "Contributors", 
-                  icon: Users,
-                  color: "text-blue-400"
-                },
-                { 
-                  number: githubStats.forks.toString(), 
-                  label: "Forks", 
                   icon: Github,
-                  color: "text-purple-400"
+                  color: "text-gray-400"
                 }
               ].map((stat, index) => {
                 const Icon = stat.icon
@@ -329,11 +337,14 @@ export default function CommunityHero() {
             ) : (
               // Fallback stats
               [
+                // Community Stats
+                { number: "900+", label: "Members", icon: Users },
+                { number: "6", label: "Events", icon: PlusCircle },
+                // GitHub Stats (fallback)
                 { number: "0", label: "Stars", icon: Star },
                 { number: "0", label: "Merged PRs", icon: GitPullRequest },
                 { number: "0", label: "Open Issues", icon: AlertCircle },
-                { number: "0", label: "Contributors", icon: Users },
-                { number: "0", label: "Forks", icon: Github }
+                { number: "0", label: "Contributors", icon: Github }
               ].map((stat, index) => {
                 const Icon = stat.icon
                 return (
