@@ -1,44 +1,48 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import Image from "next/image"
-import { useState } from "react"
-import { Menu, X, Users } from "lucide-react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { usePathname } from "next/navigation"
+import Link from "next/link";
+import Image from "next/image";
+import { useState } from "react";
+import { Menu, X, Users } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { usePathname } from "next/navigation";
 
 const navItems = [
   { href: "#home", label: "Home" },
   { href: "#about", label: "About" },
   { href: "#services", label: "Services" },
   { href: "#community", label: "Community" },
- { href: "#merch", label: "Merch" },
+  { href: "#merch", label: "Merch" },
   { href: "#team", label: "Team" },
   { href: "#faq", label: "FAQ" },
-] as const
+] as const;
 
 export default function Navigation() {
-  const [isOpen, setIsOpen] = useState(false)
-  const pathname = usePathname()
+  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
-   const scrollToSection = (href: string) => {
-    setIsOpen(false)
+  const scrollToSection = (href: string) => {
     if (href.startsWith("/")) {
-      window.location.href = href
-      return
+      window.location.href = href;
+      return;
     }
     if (pathname !== "/") {
-      window.location.href = `/${href}`
-      return
+      window.location.href = `/${href}`;
+      return;
     }
-    const el = document.querySelector(href)
-    if (el) el.scrollIntoView({ behavior: "smooth" })
-  }
+    const el = document.querySelector(href);
+
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+      setTimeout(() => setIsOpen(false), 700);
+    }
+  };
+
   const baseLink =
-    "text-muted-foreground hover:text-foreground transition-colors duration-200 relative group cursor-pointer"
+    "text-muted-foreground hover:text-foreground transition-colors duration-200 relative group cursor-pointer";
   const underline =
-    "absolute -bottom-1 left-0 h-0.5 bg-neon transition-all duration-200"
+    "absolute -bottom-1 left-0 h-0.5 bg-neon transition-all duration-200";
 
   return (
     <motion.nav
@@ -78,11 +82,11 @@ export default function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => {
-              const isRoute = item.href.startsWith("/")
-              const isActive = isRoute && pathname === item.href
+              const isRoute = item.href.startsWith("/");
+              const isActive = isRoute && pathname === item.href;
               const linkClasses = isActive
                 ? baseLink.replace("text-muted-foreground", "text-foreground")
-                : baseLink
+                : baseLink;
 
               return isRoute ? (
                 <Link
@@ -107,14 +111,19 @@ export default function Navigation() {
                   {item.label}
                   <span className={`${underline} w-0 group-hover:w-full`} />
                 </button>
-              )
+              );
             })}
 
             {/* CTA */}
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 600, damping: 25, duration: 0.2 }}
+              transition={{
+                type: "spring",
+                stiffness: 600,
+                damping: 25,
+                duration: 0.2,
+              }}
             >
               <Button asChild variant="neon" size="sm" className="ml-4">
                 <Link href="/join-community">
@@ -132,7 +141,11 @@ export default function Navigation() {
               aria-label="Toggle menu"
               className="p-2 hover:bg-white/10 rounded-lg transition-colors"
             >
-              {isOpen ? <X className="h-6 w-6 pointer-events-none" /> : <Menu className="h-6 w-6 pointer-events-none" />}
+              {isOpen ? (
+                <X className="h-6 w-6 pointer-events-none" />
+              ) : (
+                <Menu className="h-6 w-6 pointer-events-none" />
+              )}
             </button>
           </div>
         </div>
@@ -149,12 +162,12 @@ export default function Navigation() {
           >
             <div className="px-4 py-4 space-y-4">
               {navItems.map((item, index) => {
-                const isRoute = item.href.startsWith("/")
-                const isActive = isRoute && pathname === item.href
-                const mobileBase = "block py-2 transition-colors duration-200"
+                const isRoute = item.href.startsWith("/");
+                const isActive = isRoute && pathname === item.href;
+                const mobileBase = "block py-2 transition-colors duration-200";
                 const mobileCls = isActive
                   ? `${mobileBase} text-foreground font-medium`
-                  : `${mobileBase} text-muted-foreground hover:text-foreground`
+                  : `${mobileBase} text-muted-foreground hover:text-foreground`;
 
                 return (
                   <motion.div
@@ -181,7 +194,7 @@ export default function Navigation() {
                       </button>
                     )}
                   </motion.div>
-                )
+                );
               })}
 
               {/* CTA */}
@@ -203,5 +216,5 @@ export default function Navigation() {
         )}
       </AnimatePresence>
     </motion.nav>
-  )
+  );
 }
