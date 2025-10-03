@@ -13,32 +13,37 @@ const navItems = [
   { href: "#about", label: "About" },
   { href: "#services", label: "Services" },
   { href: "#community", label: "Community" },
+ { href: "#merch", label: "Merch" },
   { href: "#team", label: "Team" },
   { href: "#faq", label: "FAQ" },
-]
+] as const
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
 
-  const scrollToSection = (href: string) => {
-    setIsOpen(false) // Close mobile menu after clicking
-    
-    // If we're not on the home page, navigate to home page first
-    if (pathname !== '/') {
+   const scrollToSection = (href: string) => {
+    setIsOpen(false)
+    if (href.startsWith("/")) {
+      window.location.href = href
+      return
+    }
+    if (pathname !== "/") {
       window.location.href = `/${href}`
       return
     }
-    
-    // If we're on home page, scroll to section
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
+    const el = document.querySelector(href)
+    if (el) el.scrollIntoView({ behavior: "smooth" })
   }
+  const baseLink =
+    "text-muted-foreground hover:text-foreground transition-colors duration-200 relative group cursor-pointer"
+  const underline =
+    "absolute -bottom-1 left-0 h-0.5 bg-neon transition-all duration-200"
 
   return (
-    <motion.nav 
+    <motion.nav
+      role="navigation"
+      aria-label="Main"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10"
@@ -46,11 +51,12 @@ export default function Navigation() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link 
+          <Link
             href="/"
             className="flex items-center space-x-2 group cursor-pointer"
+            onClick={() => setIsOpen(false)}
           >
-            <motion.div 
+            <motion.div
               whileHover={{ scale: 1.1 }}
               transition={{ duration: 0.2 }}
               className="w-12 h-12 relative"
@@ -61,6 +67,7 @@ export default function Navigation() {
                 width={48}
                 height={48}
                 className="object-contain"
+                priority
               />
             </motion.div>
             <span className="font-bold text-2xl neon-text group-hover:text-neon transition-colors duration-300">
@@ -70,32 +77,52 @@ export default function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <button
-                key={item.href}
-                onClick={() => scrollToSection(item.href)}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-200 relative group cursor-pointer"
-              >
-                {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-neon transition-all duration-200 group-hover:w-full" />
-              </button>
-            ))}
-            
-            {/* Join Community Button */}
-            {(
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 600, damping: 25, duration: 0.2 }}
-              >
-                <Button asChild variant="neon" size="sm" className="ml-4">
-                  <Link href="/join-community">
-                    <Users className="mr-2 h-4 w-4 pointer-events-none" />
-                    Join Our Community
-                  </Link>
-                </Button>
-              </motion.div>
-            )}
+            {navItems.map((item) => {
+              const isRoute = item.href.startsWith("/")
+              const isActive = isRoute && pathname === item.href
+              const linkClasses = isActive
+                ? baseLink.replace("text-muted-foreground", "text-foreground")
+                : baseLink
+
+              return isRoute ? (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={linkClasses}
+                  aria-current={isActive ? "page" : undefined}
+                >
+                  {item.label}
+                  <span
+                    className={`${underline} ${
+                      isActive ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
+                  />
+                </Link>
+              ) : (
+                <button
+                  key={item.href}
+                  onClick={() => scrollToSection(item.href)}
+                  className={baseLink}
+                >
+                  {item.label}
+                  <span className={`${underline} w-0 group-hover:w-full`} />
+                </button>
+              )
+            })}
+
+            {/* CTA */}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 600, damping: 25, duration: 0.2 }}
+            >
+              <Button asChild variant="neon" size="sm" className="ml-4">
+                <Link href="/join-community">
+                  <Users className="mr-2 h-4 w-4 pointer-events-none" />
+                  Join Our Community
+                </Link>
+              </Button>
+            </motion.div>
           </div>
 
           {/* Mobile menu button */}
@@ -121,38 +148,56 @@ export default function Navigation() {
             className="md:hidden glass border-t border-white/10"
           >
             <div className="px-4 py-4 space-y-4">
-              {navItems.map((item, index) => (
-                <motion.div
-                  key={item.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <button
-                    onClick={() => scrollToSection(item.href)}
-                    className="block text-muted-foreground hover:text-foreground transition-colors duration-200 py-2 w-full text-left"
+              {navItems.map((item, index) => {
+                const isRoute = item.href.startsWith("/")
+                const isActive = isRoute && pathname === item.href
+                const mobileBase = "block py-2 transition-colors duration-200"
+                const mobileCls = isActive
+                  ? `${mobileBase} text-foreground font-medium`
+                  : `${mobileBase} text-muted-foreground hover:text-foreground`
+
+                return (
+                  <motion.div
+                    key={item.href}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
                   >
-                    {item.label}
-                  </button>
-                </motion.div>
-              ))}
-              
-              {/* Mobile Join Community Button */}
-              {(
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: navItems.length * 0.1 }}
-                  className="pt-4 border-t border-white/10"
-                >
-                  <Button asChild variant="neon" size="sm" className="w-full">
-                    <Link href="/join-community" onClick={() => setIsOpen(false)}>
-                      <Users className="mr-2 h-4 w-4 pointer-events-none" />
-                      Join Our Community
-                    </Link>
-                  </Button>
-                </motion.div>
-              )}
+                    {isRoute ? (
+                      <Link
+                        href={item.href}
+                        className={mobileCls}
+                        aria-current={isActive ? "page" : undefined}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
+                    ) : (
+                      <button
+                        onClick={() => scrollToSection(item.href)}
+                        className={`${mobileCls} text-left w-full`}
+                      >
+                        {item.label}
+                      </button>
+                    )}
+                  </motion.div>
+                )
+              })}
+
+              {/* CTA */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: navItems.length * 0.1 }}
+                className="pt-4 border-t border-white/10"
+              >
+                <Button asChild variant="neon" size="sm" className="w-full">
+                  <Link href="/join-community" onClick={() => setIsOpen(false)}>
+                    <Users className="mr-2 h-4 w-4 pointer-events-none" />
+                    Join Our Community
+                  </Link>
+                </Button>
+              </motion.div>
             </div>
           </motion.div>
         )}
@@ -160,4 +205,3 @@ export default function Navigation() {
     </motion.nav>
   )
 }
-
