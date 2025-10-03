@@ -2,8 +2,17 @@
 
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Users, PlusCircle, Instagram, Linkedin } from "lucide-react"
-import { useState } from "react"
+import { Users, PlusCircle, Instagram, Linkedin, Github, GitPullRequest, AlertCircle, Star } from "lucide-react"
+import { useState, useEffect } from "react"
+
+interface GitHubStats {
+  openIssues: number
+  mergedPRs: number
+  contributors: number
+  stars: number
+  forks: number
+  lastUpdated: string
+}
 
 // Custom X Logo Component
 const XIcon = ({ className }: { className?: string }) => (
@@ -65,6 +74,54 @@ const socialLinks = [
 ]
 
 export default function CommunityHero() {
+  const [githubStats, setGithubStats] = useState<GitHubStats | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  const fetchGitHubStats = async () => {
+    try {
+      setIsLoading(true)
+      setError(null)
+      
+      const response = await fetch('/api/github-stats')
+      const data = await response.json()
+      
+      if (data.success) {
+        setGithubStats(data.data)
+        console.log('GitHub stats updated:', data.cached ? 'from cache' : 'fresh data')
+      } else {
+        setError('Failed to fetch GitHub stats')
+        // Set fallback stats
+        setGithubStats({
+          openIssues: 0,
+          mergedPRs: 0,
+          contributors: 0,
+          stars: 0,
+          forks: 0,
+          lastUpdated: new Date().toISOString()
+        })
+      }
+    } catch (err) {
+      console.error('Error fetching GitHub stats:', err)
+      setError('Failed to fetch GitHub stats')
+      // Set fallback stats
+      setGithubStats({
+        openIssues: 0,
+        mergedPRs: 0,
+        contributors: 0,
+        stars: 0,
+        forks: 0,
+        lastUpdated: new Date().toISOString()
+      })
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    fetchGitHubStats()
+  }, [])
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-black to-gray-900 pt-20">
       {/* Enhanced Particle Background (reused from main hero) */}
@@ -198,28 +255,104 @@ export default function CommunityHero() {
              </motion.div>
            </motion.div>
 
-          {/* Stats */}
+          {/* GitHub Stats */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-wrap justify-center items-center gap-24 mb-20 max-w-2xl mx-auto"
+            className="flex flex-wrap justify-center items-center gap-8 md:gap-12 lg:gap-16 mb-20 max-w-4xl mx-auto"
           >
-            {[
-              { number: "900+", label: "Members" },
-              { number: "6", label: "Events" },
-            ].map((stat, index) => (
-              <motion.div 
-                key={stat.label}
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
-                className="text-center"
-              >
-                <div className="text-2xl md:text-3xl font-bold neon-text">{stat.number}</div>
-                <div className="text-sm text-muted-foreground">{stat.label}</div>
-              </motion.div>
-            ))}
+            {githubStats ? (
+              [
+                { 
+                  number: githubStats.stars.toString(), 
+                  label: "Stars", 
+                  icon: Star,
+                  color: "text-yellow-400"
+                },
+                { 
+                  number: githubStats.mergedPRs.toString(), 
+                  label: "Merged PRs", 
+                  icon: GitPullRequest,
+                  color: "text-green-400"
+                },
+                { 
+                  number: githubStats.openIssues.toString(), 
+                  label: "Open Issues", 
+                  icon: AlertCircle,
+                  color: "text-orange-400"
+                },
+                { 
+                  number: githubStats.contributors.toString(), 
+                  label: "Contributors", 
+                  icon: Users,
+                  color: "text-blue-400"
+                },
+                { 
+                  number: githubStats.forks.toString(), 
+                  label: "Forks", 
+                  icon: Github,
+                  color: "text-purple-400"
+                }
+              ].map((stat, index) => {
+                const Icon = stat.icon
+                return (
+                  <motion.div 
+                    key={stat.label}
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                    className="text-center group"
+                  >
+                    <div className="flex items-center justify-center mb-2">
+                      <Icon className={`w-5 h-5 mr-2 ${stat.color} group-hover:scale-110 transition-transform duration-200`} />
+                      <div className="text-2xl md:text-3xl font-bold neon-text">{stat.number}</div>
+                    </div>
+                    <div className="text-sm text-muted-foreground">{stat.label}</div>
+                  </motion.div>
+                )
+              })
+            ) : isLoading ? (
+              // Loading skeleton
+              Array.from({ length: 5 }, (_, index) => (
+                <motion.div 
+                  key={`loading-${index}`}
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 0.3 }}
+                  transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                  className="text-center"
+                >
+                  <div className="w-16 h-8 bg-gray-600 rounded animate-pulse mb-2"></div>
+                  <div className="w-12 h-4 bg-gray-600 rounded animate-pulse"></div>
+                </motion.div>
+              ))
+            ) : (
+              // Fallback stats
+              [
+                { number: "0", label: "Stars", icon: Star },
+                { number: "0", label: "Merged PRs", icon: GitPullRequest },
+                { number: "0", label: "Open Issues", icon: AlertCircle },
+                { number: "0", label: "Contributors", icon: Users },
+                { number: "0", label: "Forks", icon: Github }
+              ].map((stat, index) => {
+                const Icon = stat.icon
+                return (
+                  <motion.div 
+                    key={stat.label}
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                    className="text-center"
+                  >
+                    <div className="flex items-center justify-center mb-2">
+                      <Icon className="w-5 h-5 mr-2 text-gray-400" />
+                      <div className="text-2xl md:text-3xl font-bold neon-text">{stat.number}</div>
+                    </div>
+                    <div className="text-sm text-muted-foreground">{stat.label}</div>
+                  </motion.div>
+                )
+              })
+            )}
           </motion.div>
         </motion.div>
       </div>
