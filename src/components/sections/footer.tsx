@@ -24,7 +24,7 @@ const socialLinks = [
 const quickLinks = [
   { label: "Services", href: "/services" },
   { label: "Community", href: "/community" },
-  { label: "Events", href: "/events" },
+  // { label: "Events", href: "/events" },
 ]
 
 export default function Footer() {
