@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import Image from "next/image"
 import { useState } from "react"
+import { collaborators } from "@/data/collaborators"
 
 export default function PastCollaborations() {
   const [showPartnerForm, setShowPartnerForm] = useState(false)
@@ -18,7 +19,7 @@ export default function PastCollaborations() {
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
+
     try {
       const response = await fetch('/api/partner-request', {
         method: 'POST',
@@ -32,7 +33,7 @@ export default function PastCollaborations() {
 
       if (response.ok) {
         setIsSubmitted(true)
-        
+
         // Reset form after 3 seconds
         setTimeout(() => {
           setIsSubmitted(false)
@@ -59,13 +60,6 @@ export default function PastCollaborations() {
     }))
   }
 
-  const collaborations = [
-    { name: "REVA University", logo: "RU", logoImage: "/images/partners/reva-university.png" },
-    { name: "MS Ramaiah Institute of Technology", logo: "MSRIT", logoImage: "/images/partners/ms-ramaiah.png" },
-    { name: "Harsha Institute of Management Studies", logo: "HIMS", logoImage: "/images/partners/harsha-institute.png" },
-    { name: "T John Institute of Technology", logo: "TJIT", logoImage: "/images/partners/t-john-institute.png" }
-  ]
-
   return (
     <section className="py-24 bg-secondary/20 relative overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -80,7 +74,7 @@ export default function PastCollaborations() {
             <span className="neon-text">Collaborations</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-balance">
-            We're proud to have partnered with amazing organizations and brands 
+            We're proud to have partnered with amazing organizations and brands
             that share our vision of community-driven innovation.
           </p>
         </motion.div>
@@ -96,14 +90,14 @@ export default function PastCollaborations() {
         >
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-items-center max-w-7xl mx-auto">
-            {collaborations.map((partner, index) => (
+            {collaborators.map((partner, index) => (
               <motion.div
                 key={partner.name}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.03,
                   rotateY: 2
                 }}
@@ -115,7 +109,7 @@ export default function PastCollaborations() {
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-400/5 to-transparent blur-2xl"></div>
                   <div className="absolute inset-0 border border-purple-400/30 rounded-xl"></div>
                 </div>
-                
+
                 {/* Content */}
                 <div className="relative z-10">
                   {/* Logo image or placeholder */}
@@ -156,11 +150,11 @@ export default function PastCollaborations() {
             <Handshake className="h-12 w-12 text-neon mx-auto mb-4" />
             <h3 className="text-xl font-bold mb-4">Want to Collaborate?</h3>
             <p className="text-muted-foreground mb-6">
-              We're always looking for new partners to create amazing experiences together. 
+              We're always looking for new partners to create amazing experiences together.
               Reach out to explore collaboration opportunities.
             </p>
             <motion.div
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
                 rotateX: 3,
                 rotateY: 3
@@ -169,7 +163,7 @@ export default function PastCollaborations() {
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
               style={{ transformStyle: "preserve-3d" }}
             >
-              <button 
+              <button
                 onClick={() => setShowPartnerForm(true)}
                 className="px-6 py-3 bg-neon/10 hover:bg-neon/20 text-neon border border-neon/30 rounded-xl transition-all font-medium"
               >
@@ -218,7 +212,7 @@ export default function PastCollaborations() {
                       className="bg-background/50"
                     />
                   </div>
-                  
+
                   <div>
                     <label className="block text-sm font-medium mb-2">Mobile Number</label>
                     <Input
@@ -231,7 +225,7 @@ export default function PastCollaborations() {
                       className="bg-background/50"
                     />
                   </div>
-                  
+
                   <div>
                     <label className="block text-sm font-medium mb-2">Email Address</label>
                     <Input
@@ -244,7 +238,7 @@ export default function PastCollaborations() {
                       className="bg-background/50"
                     />
                   </div>
-                  
+
                   <Button type="submit" variant="neon" size="lg" className="w-full">
                     Show Interest
                   </Button>
