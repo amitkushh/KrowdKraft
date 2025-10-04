@@ -11,7 +11,7 @@ interface GitHubIssuesResponse {
   }
 }
 
-export function useGitHubIssues(page: number = 1, perPage: number = 9) {
+export function useGitHubIssues(page: number = 1, perPage: number = 5) {
   return useQuery<GitHubIssuesResponse>({
     queryKey: ['github-issues', page, perPage],
     queryFn: async () => {
