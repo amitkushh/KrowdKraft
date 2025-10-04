@@ -153,7 +153,6 @@ export default function DevHub() {
                     </div>
                     <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-balance">
                         Join our open-source community! Browse active issues and contribute to KrowdKraft.
-                        Every contribution matters, whether you're fixing bugs or adding features.
                     </p>
                 </motion.div>
 
