@@ -255,29 +255,65 @@ export default function CommunityHero() {
              </motion.div>
            </motion.div>
 
-          {/* GitHub Stats */}
+          {/* Community Stats */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-wrap justify-center items-center gap-8 md:gap-12 lg:gap-16 mb-20 max-w-4xl mx-auto"
+            className="flex flex-wrap justify-center items-center gap-12 md:gap-16 lg:gap-20 mb-8 max-w-2xl mx-auto"
+          >
+            {[
+              { 
+                number: "900+", 
+                label: "Members", 
+                icon: Users,
+                color: "text-blue-400"
+              },
+              { 
+                number: "6", 
+                label: "Events", 
+                icon: PlusCircle,
+                color: "text-purple-400"
+              }
+            ].map((stat, index) => {
+              const Icon = stat.icon
+              return (
+                <motion.div 
+                  key={stat.label}
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                  className="text-center group"
+                >
+                  <div className="flex items-center justify-center mb-2">
+                    <Icon className={`w-6 h-6 mr-3 ${stat.color} group-hover:scale-110 transition-transform duration-200`} />
+                    <div className="text-3xl md:text-4xl font-bold neon-text">{stat.number}</div>
+                  </div>
+                  <div className="text-base text-muted-foreground font-medium">{stat.label}</div>
+                </motion.div>
+              )
+            })}
+          </motion.div>
+
+          {/* Explanation Text */}
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto text-sm md:text-base"
+          >
+            Our open-source journey is powered by community collaboration and continuous development
+          </motion.p>
+
+          {/* GitHub Stats */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.0 }}
+            className="flex flex-wrap justify-center items-center gap-6 md:gap-8 lg:gap-10 mb-20 max-w-4xl mx-auto"
           >
             {githubStats ? (
               [
-                // Community Stats
-                { 
-                  number: "900+", 
-                  label: "Members", 
-                  icon: Users,
-                  color: "text-blue-400"
-                },
-                { 
-                  number: "6", 
-                  label: "Events", 
-                  icon: PlusCircle,
-                  color: "text-purple-400"
-                },
-                // GitHub Stats
                 { 
                   number: githubStats.stars.toString(), 
                   label: "Stars", 
@@ -285,10 +321,16 @@ export default function CommunityHero() {
                   color: "text-yellow-400"
                 },
                 { 
-                  number: githubStats.mergedPRs.toString(), 
-                  label: "Merged PRs", 
-                  icon: GitPullRequest,
-                  color: "text-green-400"
+                  number: githubStats.forks.toString(), 
+                  label: "Forks", 
+                  icon: Github,
+                  color: "text-gray-400"
+                },
+                { 
+                  number: githubStats.contributors.toString(), 
+                  label: "Contributors", 
+                  icon: Users,
+                  color: "text-blue-400"
                 },
                 { 
                   number: githubStats.openIssues.toString(), 
@@ -297,10 +339,10 @@ export default function CommunityHero() {
                   color: "text-orange-400"
                 },
                 { 
-                  number: githubStats.contributors.toString(), 
-                  label: "Contributors", 
-                  icon: Github,
-                  color: "text-gray-400"
+                  number: githubStats.mergedPRs.toString(), 
+                  label: "Merged PRs", 
+                  icon: GitPullRequest,
+                  color: "text-green-400"
                 }
               ].map((stat, index) => {
                 const Icon = stat.icon
@@ -309,14 +351,14 @@ export default function CommunityHero() {
                     key={stat.label}
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                    transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
                     className="text-center group"
                   >
                     <div className="flex items-center justify-center mb-2">
-                      <Icon className={`w-5 h-5 mr-2 ${stat.color} group-hover:scale-110 transition-transform duration-200`} />
-                      <div className="text-2xl md:text-3xl font-bold neon-text">{stat.number}</div>
+                      <Icon className={`w-4 h-4 mr-2 ${stat.color} group-hover:scale-110 transition-transform duration-200`} />
+                      <div className="text-xl md:text-2xl font-bold neon-text">{stat.number}</div>
                     </div>
-                    <div className="text-sm text-muted-foreground">{stat.label}</div>
+                    <div className="text-xs text-muted-foreground">{stat.label}</div>
                   </motion.div>
                 )
               })
@@ -327,24 +369,21 @@ export default function CommunityHero() {
                   key={`loading-${index}`}
                   initial={{ scale: 0, opacity: 0 }}
                   animate={{ scale: 1, opacity: 0.3 }}
-                  transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                  transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
                   className="text-center"
                 >
-                  <div className="w-16 h-8 bg-gray-600 rounded animate-pulse mb-2"></div>
-                  <div className="w-12 h-4 bg-gray-600 rounded animate-pulse"></div>
+                  <div className="w-12 h-6 bg-gray-600 rounded animate-pulse mb-2"></div>
+                  <div className="w-8 h-3 bg-gray-600 rounded animate-pulse"></div>
                 </motion.div>
               ))
             ) : (
               // Fallback stats
               [
-                // Community Stats
-                { number: "900+", label: "Members", icon: Users },
-                { number: "6", label: "Events", icon: PlusCircle },
-                // GitHub Stats (fallback)
                 { number: "0", label: "Stars", icon: Star },
-                { number: "0", label: "Merged PRs", icon: GitPullRequest },
+                { number: "0", label: "Forks", icon: Github },
+                { number: "0", label: "Contributors", icon: Users },
                 { number: "0", label: "Open Issues", icon: AlertCircle },
-                { number: "0", label: "Contributors", icon: Github }
+                { number: "0", label: "Merged PRs", icon: GitPullRequest }
               ].map((stat, index) => {
                 const Icon = stat.icon
                 return (
@@ -352,14 +391,14 @@ export default function CommunityHero() {
                     key={stat.label}
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                    transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
                     className="text-center"
                   >
                     <div className="flex items-center justify-center mb-2">
-                      <Icon className="w-5 h-5 mr-2 text-gray-400" />
-                      <div className="text-2xl md:text-3xl font-bold neon-text">{stat.number}</div>
+                      <Icon className="w-4 h-4 mr-2 text-gray-400" />
+                      <div className="text-xl md:text-2xl font-bold neon-text">{stat.number}</div>
                     </div>
-                    <div className="text-sm text-muted-foreground">{stat.label}</div>
+                    <div className="text-xs text-muted-foreground">{stat.label}</div>
                   </motion.div>
                 )
               })
