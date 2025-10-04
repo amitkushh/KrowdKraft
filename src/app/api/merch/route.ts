@@ -29,9 +29,18 @@ export async function POST(request: NextRequest) {
           }),
         })
 
+        const respText = await response.text()
+        let respJson = null
+        try {
+          respJson = JSON.parse(respText)
+        } catch (e) {
+          // ignore json parse error
+        }
+
         if (!response.ok) {
-          console.error('Google Sheets merch webhook failed:', response.statusText)
+          console.error('Google Sheets merch webhook failed:', response.status, response.statusText, respText)
         } else {
+          console.log('Google Sheets merch webhook response:', respJson ?? respText)
           console.log('Successfully added merch entry to Google Sheets')
         }
       } catch (sheetError) {
