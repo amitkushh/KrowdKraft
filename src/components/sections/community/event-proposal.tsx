@@ -146,11 +146,11 @@ export default function EventProposal() {
             viewport={{ once: true }}
             className="glass-card p-8"
           >
-            <div className="flex items-center mb-8">
-              <div className="w-12 h-12 bg-neon/10 rounded-xl flex items-center justify-center mr-4">
+            <div className="flex flex-col gap-6 md:gap-0 md:flex-row items-center mb-8">
+              <div className="p-4 bg-neon/10 rounded-xl flex items-center justify-center mr-4">
                 <Lightbulb className="h-6 w-6 text-neon" />
               </div>
-              <div>
+              <div className="text-center md:text-left">
                 <h3 className="text-2xl font-bold">Share Your Idea</h3>
                 <p className="text-muted-foreground">Help us create something extraordinary together</p>
               </div>

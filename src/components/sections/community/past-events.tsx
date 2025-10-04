@@ -11,11 +11,11 @@ interface EventCardProps {
 }
 
 function EventCard({ event, index, isCenter }: EventCardProps) {
-  const cardSize = "w-72" // All cards same size, larger
+  const cardSize = "w-full sm:w-72" // All cards same size, larger
   const imageHeight = "h-32" // All cards same height, larger
   const iconSize = "h-7 w-7" // All cards same icon size
   const titleSize = "text-lg" // All cards same title size
-  const padding = "p-6" // All cards same padding, larger
+  const padding = "p-4 sm:p-6" // All cards same padding, larger
   const tapeWidth = "w-12" // All cards same tape width
   
   return (
@@ -39,7 +39,7 @@ function EventCard({ event, index, isCenter }: EventCardProps) {
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
       }}
-      className={`${cardSize} backdrop-blur-sm border border-white/20 rounded-xl overflow-hidden transform-gpu cursor-pointer group shadow-xl relative`}
+      className={`${cardSize} backdrop-blur-sm border border-white/20 rounded-xl overflow-hidden transform-gpu cursor-pointer group shadow-xl relative mx-auto`}
     >
       {/* Background overlay */}
       <div className="absolute inset-0 bg-black/60 backdrop-blur-[1px]" style={{ opacity: event.backgroundImage ? 0.8 : 0 }}></div>
@@ -111,39 +111,48 @@ export default function PastEvents() {
         {/* Exhibition Board Background */}
         <div className="relative max-w-6xl mx-auto">
           {/* Cork Board Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-amber-100/5 to-amber-200/10 rounded-3xl border-4 border-amber-200/20 shadow-2xl"></div>
+          <div className="hidden lg:block absolute inset-0 bg-gradient-to-br from-amber-100/5 to-amber-200/10 rounded-3xl border-4 border-amber-200/20 shadow-2xl"></div>
           
           {/* Push Pins */}
-          <div className="absolute top-6 left-12 w-3 h-3 bg-red-500 rounded-full shadow-lg z-30"></div>
-          <div className="absolute top-6 right-12 w-3 h-3 bg-blue-500 rounded-full shadow-lg z-30"></div>
-          <div className="absolute bottom-6 left-16 w-3 h-3 bg-green-500 rounded-full shadow-lg z-30"></div>
-          <div className="absolute bottom-6 right-16 w-3 h-3 bg-yellow-500 rounded-full shadow-lg z-30"></div>
-          
+          <div className="hidden lg:block absolute top-6 left-12 w-3 h-3 bg-red-500 rounded-full shadow-lg z-30"></div>
+          <div className="hidden lg:block absolute top-6 right-12 w-3 h-3 bg-blue-500 rounded-full shadow-lg z-30"></div>
+          <div className="hidden lg:block absolute bottom-6 left-16 w-3 h-3 bg-green-500 rounded-full shadow-lg z-30"></div>
+          <div className="hidden lg:block absolute bottom-6 right-16 w-3 h-3 bg-yellow-500 rounded-full shadow-lg z-30"></div>
+
           {/* Events Gallery */}
-          <div className="relative p-12 h-[800px]">
+          <div className="relative p-6 lg:p-12">
             {/* Center Card */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
-              <EventCard event={events[0]} index={0} isCenter={true} />
-            </div>
-            
+            <div className="hidden lg:block relative h-[800px]">
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
+                <EventCard event={events[0]} index={0} isCenter={true} />
+              </div>
+
             {/* Top Left Card */}
-            <div className="absolute top-16 left-16 z-10">
-              <EventCard event={events[1]} index={1} isCenter={false} />
-            </div>
-            
+              <div className="absolute top-16 left-16 z-10">
+                <EventCard event={events[1]} index={1} isCenter={false} />
+              </div>
+
             {/* Top Right Card */}
-            <div className="absolute top-16 right-16 z-10">
-              <EventCard event={events[2]} index={2} isCenter={false} />
-            </div>
-            
+              <div className="absolute top-16 right-16 z-10">
+                <EventCard event={events[2]} index={2} isCenter={false} />
+              </div>
+
             {/* Bottom Left Card */}
-            <div className="absolute bottom-16 left-16 z-10">
-              <EventCard event={events[3]} index={3} isCenter={false} />
-            </div>
-            
+              <div className="absolute bottom-16 left-16 z-10">
+                <EventCard event={events[3]} index={3} isCenter={false} />
+              </div>
+
             {/* Bottom Right Card */}
-            <div className="absolute bottom-16 right-16 z-10">
-              <EventCard event={events[4]} index={4} isCenter={false} />
+              <div className="absolute bottom-16 right-16 z-10">
+                <EventCard event={events[4]} index={4} isCenter={false} />
+              </div>
+            </div>
+
+            {/* Mobile Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:hidden">
+              {events.map((ev, idx) => (
+                <EventCard key={ev.title} event={ev} index={idx} isCenter={idx === 0} />
+              ))}
             </div>
           </div>
         </div>

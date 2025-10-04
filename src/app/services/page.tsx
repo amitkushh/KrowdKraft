@@ -29,7 +29,7 @@ export default function ServicesPage() {
         <meta name="description" content="Explore KrowdKraft's comprehensive services: Community Design, Event Activations, and Campus Waves. Bridge your brand to Gen Z culture." />
       </Head>
       <Navigation />
-      
+
       {/* Hero Section with Interactive Cards */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-secondary/30 via-secondary/10 to-transparent relative overflow-hidden">
         {/* Background Elements */}
@@ -55,15 +55,15 @@ export default function ServicesPage() {
               We don't just market to Gen Z - we speak their language, understand their culture, 
               and create authentic connections that drive real engagement.
             </p>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
               className="flex flex-col sm:flex-row gap-6 justify-center items-center"
             >
-              <Button 
-                variant="neon" 
+              <Button
+                variant="neon"
                 size="lg"
                 className="group text-lg px-8 py-4 h-auto"
                 asChild
@@ -72,11 +72,11 @@ export default function ServicesPage() {
                   <Calendar className="mr-3 h-6 w-6 pointer-events-none" />
                   Book a Call
                   <ExternalLink className="ml-3 h-5 w-5 pointer-events-none" />
-              </Link>
-            </Button>
-              
-              <Button 
-                variant="outline" 
+                </Link>
+              </Button>
+
+              <Button
+                variant="outline"
                 size="lg"
                 className="group text-lg px-8 py-4 h-auto border-2"
                 onClick={() => setIsQuoteModalOpen(true)}
@@ -92,10 +92,10 @@ export default function ServicesPage() {
       {/* Interactive Services Showcase */}
       <section className="py-24 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto max-w-7xl">
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             className="text-center mb-16"
           >
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
@@ -109,20 +109,22 @@ export default function ServicesPage() {
 
           {/* Service Navigation */}
           <div className="flex justify-center mb-12">
-            <div className="glass-card p-2 inline-flex rounded-2xl">
-              {services.map((service, index) => (
-                <button
-                  key={service.id}
-                  onClick={() => setActiveService(index)}
-                  className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
-                    activeService === index 
-                      ? 'bg-neon text-black shadow-lg shadow-neon/25' 
-                      : 'text-muted-foreground hover:text-white hover:bg-white/5'
-                  }`}
-                >
-                  {service.title}
-                </button>
-              ))}
+            <div className="glass-card p-2 rounded-2xl">
+              <div className="flex flex-col sm:flex-row gap-2 justify-center">
+                {services.map((service, index) => (
+                  <button
+                    key={service.id}
+                    onClick={() => setActiveService(index)}
+                    className={`w-full sm:w-auto px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
+                      activeService === index
+                        ? "bg-neon text-black shadow-lg shadow-neon/25"
+                        : "text-muted-foreground hover:text-white hover:bg-white/5"
+                    }`}
+                  >
+                    {service.title}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -138,18 +140,18 @@ export default function ServicesPage() {
             <div className="space-y-8">
               <div>
                 <div className="flex items-center mb-6">
-                  <div className="w-20 h-20 bg-neon/10 rounded-2xl flex items-center justify-center mr-6">
+                  <div className="p-3 bg-neon/10 rounded-2xl flex items-center justify-center mr-6">
                     {(() => {
                       const IconComponent = iconMap[services[activeService].icon as keyof typeof iconMap] || Users
                       return <IconComponent className="h-10 w-10 text-neon" />
                     })()}
-                      </div>
-                      <div>
+                  </div>
+                  <div>
                     <h3 className="text-3xl font-bold mb-2">{services[activeService].title}</h3>
                     <div className="w-16 h-1 bg-neon rounded-full"></div>
                   </div>
                 </div>
-                
+
                 <p className="text-lg text-muted-foreground leading-relaxed mb-8">
                   {services[activeService].description}
                 </p>
@@ -171,9 +173,9 @@ export default function ServicesPage() {
                       <span className="text-muted-foreground">{feature}</span>
                     </motion.div>
                   ))}
-                        </div>
-                      </div>
-                    </div>
+                </div>
+              </div>
+            </div>
 
             {/* Visual Element */}
             <div className="relative">
@@ -196,18 +198,18 @@ export default function ServicesPage() {
                     Let's discuss how {services[activeService].title.toLowerCase()} can transform your brand
                   </p>
                   <Button 
-                    variant="neon" 
-                    className="group"
-                    asChild
+                  variant="neon" 
+                    className="group w-full h-fit text-wrap" 
+                  asChild
                   >
                     <Link href={process.env.NEXT_PUBLIC_CALENDLY_URL || "https://calendly.com/krowdkraft-official/30min"} target="_blank">
                       Enquire about {services[activeService].title}
-                      <ArrowRight className="ml-2 h-4 w-4 pointer-events-none" />
+                      <ArrowRight className="ml-2 md:h-4 md:w-4 h-10 w-10 pointer-events-none" />
                     </Link>
                   </Button>
                 </div>
-                </motion.div>
-          </div>
+              </motion.div>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -227,7 +229,7 @@ export default function ServicesPage() {
             className="text-center mb-20"
           >
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-              Our{" "}
+              Our{" "} 
               <span className="neon-text">Process</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -246,7 +248,7 @@ export default function ServicesPage() {
               },
               {
                 icon: Lightbulb,
-                step: "02", 
+                step: "02",
                 title: "Creative Development",
                 description: "Our creative team develops compelling narratives, selects perfect collaborators, and designs experiences that spark genuine engagement.",
                 highlight: "Creative Innovation"
@@ -269,12 +271,12 @@ export default function ServicesPage() {
               >
                 <div className="glass-card p-8 text-center h-full relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-20 h-20 bg-neon/5 rounded-full transform translate-x-6 -translate-y-6"></div>
-                  
+
                   <div className="relative z-10">
                     <div className="w-16 h-16 bg-neon/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
                       <phase.icon className="h-8 w-8 text-neon" />
                     </div>
-                    
+
                     <div className="text-4xl font-bold text-neon/30 mb-2">{phase.step}</div>
                     <h3 className="text-xl font-bold mb-4">{phase.title}</h3>
                     <div className="text-sm text-neon font-medium mb-3">{phase.highlight}</div>
@@ -290,7 +292,7 @@ export default function ServicesPage() {
       {/* Enhanced CTA Section */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-neon/5 via-purple-500/5 to-neon/5"></div>
-        
+
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -299,40 +301,40 @@ export default function ServicesPage() {
             className="glass-card p-12 relative overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-neon/10 to-purple-500/10"></div>
-            
+
             <div className="relative z-10">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
                 Ready to Join the{" "}
                 <span className="neon-text">Cultural Revolution?</span>
-            </h2>
+              </h2>
               <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
                 Don't just market to the next generation - become part of their culture. 
                 Let's create something that matters.
               </p>
-              
-              <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <Button 
-                  variant="neon" 
+
+              <div className="flex flex-col sm:flex-row gap-6 justify-center md:px-16">
+                <Button
+                  variant="neon"
                   size="lg"
-                  className="group text-lg px-8 py-4 h-auto"
+                  className="group text-lg px-3 py-4 h-auto w-full flex gap-5"
                   asChild
                 >
                   <Link href={process.env.NEXT_PUBLIC_CALENDLY_URL || "https://calendly.com/krowdkraft-official/30min"} target="_blank">
-                    <Calendar className="mr-3 h-6 w-6 pointer-events-none" />
+                    <Calendar className="h-6 w-6 pointer-events-none" />
                     Book a Call
-                    <ExternalLink className="ml-3 h-5 w-5 pointer-events-none" />
-                </Link>
-              </Button>
-                
-                <Button 
-                  variant="outline" 
+                    <ExternalLink className="h-5 w-5 pointer-events-none" />
+                  </Link>
+                </Button>
+
+                <Button
+                  variant="outline"
                   size="lg"
-                  className="group text-lg px-8 py-4 h-auto border-2"
+                  className="group text-lg px-3 py-4 h-auto border-2 w-full"
                   onClick={() => setIsQuoteModalOpen(true)}
                 >
                   Get Custom Quote
                   <ArrowRight className="ml-3 h-5 w-5 pointer-events-none" />
-              </Button>
+                </Button>
               </div>
 
               <div className="mt-8 pt-8 border-t border-white/10">
@@ -346,8 +348,8 @@ export default function ServicesPage() {
       </section>
 
       <Footer />
-      
-      <QuoteModal 
+
+      <QuoteModal
         isOpen={isQuoteModalOpen}
         onClose={() => setIsQuoteModalOpen(false)}
       />
