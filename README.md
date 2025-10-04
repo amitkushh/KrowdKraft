@@ -27,6 +27,7 @@ We are excited to welcome you to our community and look forward to building a be
 - **State Management**: [Zustand](https://zustand-demo.pmnd.rs/) - Small, fast state management
 - **Form Handling**: [React Hook Form](https://react-hook-form.com/) - Performant forms with validation
 - **Email Service**: [Nodemailer](https://nodemailer.com/) - Email sending functionality
+- **GitHub Integration**: Live repository stats via GitHub API with intelligent caching
 
 ## Getting Started
 
@@ -39,6 +40,37 @@ Before you begin, ensure you have the following installed:
 - **Node.js** (version 18.0 or higher)
 - **npm** (comes with Node.js)
 - **Git** for version control
+
+### Environment Variables
+
+Create a `.env.local` file in the root directory with the following variables:
+
+```bash
+# Email Configuration
+EMAIL_USER=
+EMAIL_PASS=
+
+# Google Sheets Integration
+GOOGLE_SHEETS_WEBHOOK_URL=
+GOOGLE_SHEETS_PARTNERSHIP_WEBHOOK_URL=
+
+# Medium profile username for articles
+MEDIUM_USER_PROFILE = 
+
+# Social Media & Public URLs
+NEXT_PUBLIC_LINKEDIN_URL=https://www.linkedin.com/company/krowdkraft/
+NEXT_PUBLIC_TWITTER_URL=https://x.com/KrowdKraft_
+NEXT_PUBLIC_INSTAGRAM_URL=https://www.instagram.com/krowdkraft_/
+NEXT_PUBLIC_WHATSAPP_COMMUNITY_URL=
+NEXT_PUBLIC_CALENDLY_URL=https://calendly.com/krowdkraft-official/30min
+
+# GitHub API Configuration (Optional - for higher rate limits)
+GITHUB_TOKEN=your_github_token_here
+GITHUB_REPO_OWNER=DarshanKrishna-DK
+GITHUB_REPO_NAME=KrowdKraft
+```
+
+**Note**: The GitHub stats feature will work without a token, but with rate limits. For production use, we recommend setting up a GitHub token.
 
 ### Installation
 
