@@ -10,7 +10,7 @@ const socialLinks = [
   {
     name: "Instagram",
     description: "Follow our latest updates and behind-the-scenes content",
-    url: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://www.instagram.com/krowdkraft_/",
+    url: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://www.instagram.com/krowdkraft/",
     icon: Instagram,
     color: "from-pink-500 to-purple-500",
     bgColor: "bg-gradient-to-r from-pink-500/10 to-purple-500/10",
@@ -33,17 +33,17 @@ const socialLinks = [
     color: "from-blue-500 to-blue-700",
     bgColor: "bg-gradient-to-r from-blue-500/10 to-blue-700/10",
     hoverColor: "hover:from-blue-500/20 hover:to-blue-700/20"
-  },
-  {
-    name: "WhatsApp Community",
-    description: "Join our exclusive WhatsApp community for insider updates",
-    url: process.env.NEXT_PUBLIC_WHATSAPP_COMMUNITY_URL || "https://chat.whatsapp.com/Ko9hqFs7hhtLJY1nePhkNO",
-    icon: MessageCircle,
-    color: "from-green-500 to-green-600",
-    bgColor: "bg-gradient-to-r from-green-500/10 to-green-600/10",
-    hoverColor: "hover:from-green-500/20 hover:to-green-600/20",
-    comingSoon: false
   }
+  // {
+  //   name: "WhatsApp Community",
+  //   description: "Join our exclusive WhatsApp community for insider updates",
+  //   url: process.env.NEXT_PUBLIC_WHATSAPP_COMMUNITY_URL || "https://chat.whatsapp.com/Ko9hqFs7hhtLJY1nePhkNO",
+  //   icon: MessageCircle,
+  //   color: "from-green-500 to-green-600",
+  //   bgColor: "bg-gradient-to-r from-green-500/10 to-green-600/10",
+  //   hoverColor: "hover:from-green-500/20 hover:to-green-600/20",
+  //   comingSoon: false
+  // }
 ]
 
 export default function JoinCommunityPage() {
@@ -141,51 +141,31 @@ export default function JoinCommunityPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 + index * 0.1, duration: 0.5 }}
               >
-                {link.comingSoon ? (
-                  <div className="relative">
-                    <div className={`${link.bgColor} ${link.hoverColor} p-4 rounded-2xl border border-white/10 backdrop-blur-sm transition-all duration-300 opacity-60 cursor-not-allowed`}>
-                      <div className="flex items-center">
-                        <div className={`w-12 h-12 bg-gradient-to-r ${link.color} rounded-xl flex items-center justify-center mr-4`}>
-                          <IconComponent className="h-6 w-6 text-white" />
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="font-semibold text-white mb-1">{link.name}</h3>
-                          <p className="text-sm text-muted-foreground">{link.description}</p>
-                        </div>
-                        <ExternalLink className="h-5 w-5 text-muted-foreground" />
-                      </div>
-                    </div>
-                    <div className="absolute top-2 right-2 bg-neon/20 text-neon text-xs px-2 py-1 rounded-full font-medium">
-                      Coming Soon
-                    </div>
-                  </div>
-                ) : (
-                  <Link
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block group"
+                <Link
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block group"
+                >
+                  <motion.div
+                    whileHover={{ scale: 1.02, y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                    className={`${link.bgColor} ${link.hoverColor} p-4 rounded-2xl border border-white/10 backdrop-blur-sm transition-all duration-300 group-hover:border-white/20 group-hover:shadow-lg group-hover:shadow-black/20`}
                   >
-                    <motion.div
-                      whileHover={{ scale: 1.02, y: -2 }}
-                      whileTap={{ scale: 0.98 }}
-                      className={`${link.bgColor} ${link.hoverColor} p-4 rounded-2xl border border-white/10 backdrop-blur-sm transition-all duration-300 group-hover:border-white/20 group-hover:shadow-lg group-hover:shadow-black/20`}
-                    >
-                      <div className="flex items-center">
-                        <div className={`w-12 h-12 bg-gradient-to-r ${link.color} rounded-xl flex items-center justify-center mr-4`}>
-                          <IconComponent className="h-6 w-6 text-white" />
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="font-semibold text-white mb-1 group-hover:text-neon transition-colors">
-                            {link.name}
-                          </h3>
-                          <p className="text-sm text-muted-foreground">{link.description}</p>
-                        </div>
-                        <ExternalLink className="h-5 w-5 text-muted-foreground group-hover:text-white transition-colors" />
+                    <div className="flex items-center">
+                      <div className={`w-12 h-12 bg-gradient-to-r ${link.color} rounded-xl flex items-center justify-center mr-4`}>
+                        <IconComponent className="h-6 w-6 text-white" />
                       </div>
-                    </motion.div>
-                  </Link>
-                )}
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-white mb-1 group-hover:text-neon transition-colors">
+                          {link.name}
+                        </h3>
+                        <p className="text-sm text-muted-foreground">{link.description}</p>
+                      </div>
+                      <ExternalLink className="h-5 w-5 text-muted-foreground group-hover:text-white transition-colors" />
+                    </div>
+                  </motion.div>
+                </Link>
               </motion.div>
             )
           })}
