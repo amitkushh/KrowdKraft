@@ -43,7 +43,7 @@ function StaticParticle({
 export default function Hero() {
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* 3D Globe Background */}
       <Suspense fallback={null}>
         <SimpleGlobe3D />

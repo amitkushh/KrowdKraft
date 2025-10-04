@@ -178,7 +178,7 @@ export default function CommunityHero() {
 
           {/* Main Heading */}
           <motion.h1 
-            className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 text-balance"
+            className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 mt-16 text-balance"
             style={{ 
               background: "linear-gradient(135deg, #ffffff 0%, #a855f7 50%, #ec4899 100%)",
               WebkitBackgroundClip: "text",
@@ -260,7 +260,7 @@ export default function CommunityHero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-wrap justify-center items-center gap-12 md:gap-16 lg:gap-20 mb-8 max-w-2xl mx-auto"
+            className="flex flex-wrap justify-center items-center gap-6 md:gap-8 lg:gap-10 mb-8 max-w-4xl mx-auto"
           >
             {[
               { 
@@ -276,7 +276,6 @@ export default function CommunityHero() {
                 color: "text-purple-400"
               }
             ].map((stat, index) => {
-              const Icon = stat.icon
               return (
                 <motion.div 
                   key={stat.label}
@@ -286,10 +285,9 @@ export default function CommunityHero() {
                   className="text-center group"
                 >
                   <div className="flex items-center justify-center mb-2">
-                    <Icon className={`w-6 h-6 mr-3 ${stat.color} group-hover:scale-110 transition-transform duration-200`} />
-                    <div className="text-3xl md:text-4xl font-bold neon-text">{stat.number}</div>
+                    <div className="text-xl md:text-2xl font-bold neon-text">{stat.number}</div>
                   </div>
-                  <div className="text-base text-muted-foreground font-medium">{stat.label}</div>
+                  <div className="text-xs text-muted-foreground">{stat.label}</div>
                 </motion.div>
               )
             })}
@@ -300,7 +298,7 @@ export default function CommunityHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto text-sm md:text-base"
+            className="text-center text-muted-foreground mb-8 max-w-md sm:max-w-xl md:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto text-sm md:text-base whitespace-normal lg:whitespace-nowrap px-4"
           >
             Our open-source journey is powered by community collaboration and continuous development
           </motion.p>
