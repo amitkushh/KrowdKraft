@@ -123,11 +123,7 @@ export default function Team() {
               boxShadow: "0 0 20px rgba(168, 85, 247, 0.5)"
             }}
             whileTap={{ scale: 0.95 }}
-            className="absolute left-4 z-20 w-14 h-14 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center transition-all duration-300 hover:border-neon/30"
-            style={{ 
-              top: "50%", 
-              marginTop: "-28px" // Half of height (56px / 2)
-            }}
+            className="absolute left-4 z-20 w-14 h-14 top-[30%] sm:top-1/2 -mt-7 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center transition-all duration-300 hover:border-neon/30"
             aria-label="Previous team member"
           >
             <ChevronLeft className="w-7 h-7 text-white" />
@@ -141,11 +137,7 @@ export default function Team() {
               boxShadow: "0 0 20px rgba(168, 85, 247, 0.5)"
             }}
             whileTap={{ scale: 0.95 }}
-            className="absolute right-4 z-20 w-14 h-14 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center transition-all duration-300 hover:border-neon/30"
-            style={{ 
-              top: "50%", 
-              marginTop: "-28px" // Half of height (56px / 2)
-            }}
+            className="absolute right-4 z-20 w-14 h-14 top-[30%] sm:top-1/2 -mt-7 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center transition-all duration-300 hover:border-neon/30"
             aria-label="Next team member"
           >
             <ChevronRight className="w-7 h-7 text-white" />
